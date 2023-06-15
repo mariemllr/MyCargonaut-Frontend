@@ -1,5 +1,6 @@
 import { Container, Stack, Button, Box } from "@mui/material";
 import React from "react";
+import logo from "../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png";
 
 const HomePage: React.FC = () => {
   return (
@@ -13,6 +14,9 @@ const HomePage: React.FC = () => {
       }}
     >
       <Stack spacing={2} sx={{ width: "70%" }}>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <img src={logo} alt="Logo" style={{ width: "50%", height: "50%" }} />
+        </Box>
         <Button variant="outlined" sx={{ height: "5.5rem" }}>
           Angebote
         </Button>
