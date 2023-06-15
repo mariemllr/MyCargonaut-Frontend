@@ -26,7 +26,9 @@ const HomePage: React.FC = () => {
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Stack spacing={2} sx={{ width: "60%" }}>
             <Button variant="contained">Anmelden</Button>
-            <Button variant="outlined">Registrieren</Button>
+            <Button variant="outlined" sx={{ textDecoration: "underline" }}>
+              Registrieren
+            </Button>
           </Stack>
         </Box>
       </Stack>
