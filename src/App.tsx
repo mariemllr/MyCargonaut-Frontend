@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 import "./App.css";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage/HomePage";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 function App() {

@@ -1,6 +1,6 @@
 import { Container, Stack, Button, Box } from "@mui/material";
 import React from "react";
-import logo from "../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png";
+import logo from "../../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png";
 
 const HomePage: React.FC = () => {
   return (
