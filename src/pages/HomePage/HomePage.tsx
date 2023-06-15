@@ -10,6 +10,7 @@ import {
 import React from "react";
 import logo from "../../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png";
 import RegisterModal from "../../components/RegisterModal/RegisterModal";
+import LoginModal from "../../components/LoginModal/LoginModal";
 
 const HomePage: React.FC = () => {
   const [openLoginModal, setOpenLoginModal] = React.useState(false);
@@ -64,7 +65,14 @@ const HomePage: React.FC = () => {
         </Button>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Stack spacing={2} sx={{ width: "60%" }}>
-            <Button variant="contained">Anmelden</Button>
+            <Button onClick={handleOpenLoginModal} variant="contained">
+              Anmelden
+            </Button>
+            <LoginModal
+              open={openLoginModal}
+              onClose={handleCloseLoginModal}
+              onRegister={handleOpenRegisterModal}
+            ></LoginModal>
             <Button
               onClick={handleOpenRegisterModal}
               variant="outlined"
