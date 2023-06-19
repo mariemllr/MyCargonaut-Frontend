@@ -1,6 +1,6 @@
-import { Avatar, Box, Button } from "@mui/material";
-import React from "react";
-import UploadIcon from "@mui/icons-material/Upload";
+import { Avatar, Box, Button } from '@mui/material';
+import React from 'react';
+import UploadIcon from '@mui/icons-material/Upload';
 
 type UserAvatarProps = {
   lastName?: string;
@@ -17,17 +17,17 @@ const UserAvatar = ({ lastName, image, onChange }: UserAvatarProps) => {
         src={image}
       />
       <Button
-        key="selectImage"
-        component="label"
-        variant="contained"
+        key='selectImage'
+        component='label'
+        variant='contained'
         startIcon={<UploadIcon />}
       >
         Bild auswählen
         <input
           hidden
-          accept="image/*"
+          accept='image/*'
           multiple
-          type="file"
+          type='file'
           onChange={onChange}
         />
       </Button>

@@ -1,7 +1,7 @@
-import axios, { CreateAxiosDefaults } from "axios";
+import axios, { CreateAxiosDefaults } from 'axios';
 
 const AXIOS_CONFIG: CreateAxiosDefaults<unknown> = {
-  baseURL: "http://localhost:8080",
+  baseURL: 'http://localhost:8080',
   withCredentials: true,
 };
 
