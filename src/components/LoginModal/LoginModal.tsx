@@ -96,6 +96,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
         password: state.password,
       });
       const user = await rest.get("user/me");
+      console.log(user);
       dispatch(setUser(user.data as UserState));
       dispatch(login());
       onClose();
