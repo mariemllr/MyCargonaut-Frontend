@@ -5,6 +5,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from "./reducer/user";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 const reducer = combineReducers({
   user: userReducer,
@@ -19,7 +20,7 @@ function App() {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Provider store={store}>
         <div className="App">
-          <HomePage></HomePage>
+          <ProfilePage></ProfilePage>
         </div>
       </Provider>
     </LocalizationProvider>
