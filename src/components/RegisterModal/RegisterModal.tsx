@@ -1,5 +1,5 @@
 import React, { useCallback, useReducer } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Alert,
   Box,
@@ -20,6 +20,7 @@ import Snackbar from "@mui/material/Snackbar";
 import { RootState } from "../../App";
 import UserAvatar from "../UserAvatar/UserAvatar";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { setImage } from "../../reducer/user";
 
 const initialState = {
   image: "",
@@ -108,7 +109,7 @@ const RegisterModal = ({
   onRegisterSuccess,
 }: RegisterModalProps) => {
   const user = useSelector((state: RootState) => state.user);
-
+  const dispatch = useDispatch();
   const [state, dispatchLocal] = useReducer(reducer, initialState);
 
   const handleImageChange = useCallback(
@@ -123,6 +124,24 @@ const RegisterModal = ({
     },
     [dispatchLocal]
   );
+
+  const uploadImage = async () => {
+    const newImage = state.image;
+    if (!newImage) return;
+    try {
+      const formData = new FormData();
+      const blob = await fetch(newImage).then((b) => b.blob());
+      formData.append("file", blob);
+      const res = await rest.put("/user/image", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      });
+      dispatch(setImage(res.data));
+    } catch (error) {
+      if (error instanceof AxiosError) console.error(error.response?.data.message);
+    }
+  }
 
   const handlePasswordChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -189,7 +208,9 @@ const RegisterModal = ({
           password: state.password,
           firstName: state.firstName,
           lastName: state.lastName,
+          phone: state.phone,
         });
+        uploadImage();
         onRegisterSuccess();
         onClose();
       } catch (error) {
