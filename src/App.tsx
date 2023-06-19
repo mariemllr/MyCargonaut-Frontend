@@ -20,7 +20,7 @@ function App() {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Provider store={store}>
         <div className='App'>
-          <ProfilePage></ProfilePage>
+          <HomePage></HomePage>
         </div>
       </Provider>
     </LocalizationProvider>
