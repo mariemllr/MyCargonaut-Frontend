@@ -30,7 +30,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .ts,.tsx,.js --fix",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "lint-staged": "lint-staged"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
@@ -40,7 +41,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run lint-staged"
     }
   },
   "eslintConfig": {
