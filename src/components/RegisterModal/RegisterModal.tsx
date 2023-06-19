@@ -1,5 +1,5 @@
-import React, { useCallback, useReducer } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useCallback, useReducer } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Alert,
   Box,
@@ -9,62 +9,62 @@ import {
   Modal,
   TextField,
   Typography,
-} from "@mui/material";
-import { styled } from "@mui/material/styles";
-import Grid2 from "@mui/material/Unstable_Grid2";
-import CloseIcon from "@mui/icons-material/Close";
-import { CenteredColumnGrid } from "../../styles/common";
-import rest from "../../utility/rest";
-import { AxiosError } from "axios";
-import Snackbar from "@mui/material/Snackbar";
-import { RootState } from "../../App";
-import UserAvatar from "../UserAvatar/UserAvatar";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { setImage } from "../../reducer/user";
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import Grid2 from '@mui/material/Unstable_Grid2';
+import CloseIcon from '@mui/icons-material/Close';
+import { CenteredColumnGrid } from '../../styles/common';
+import rest from '../../utility/rest';
+import { AxiosError } from 'axios';
+import Snackbar from '@mui/material/Snackbar';
+import { RootState } from '../../App';
+import UserAvatar from '../UserAvatar/UserAvatar';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { setImage } from '../../reducer/user';
 
 const initialState = {
-  image: "",
-  firstName: "",
-  lastName: "",
-  email: "",
-  emailConfirm: "",
-  phone: "",
-  username: "",
-  password: "",
-  passwordConfirm: "",
+  image: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  emailConfirm: '',
+  phone: '',
+  username: '',
+  password: '',
+  passwordConfirm: '',
   birthday: new Date(),
   errorAlert: false,
-  errorMessage: "",
+  errorMessage: '',
 };
 
 function reducer(
   state: typeof initialState,
-  action: { type: string; payload?: unknown }
+  action: { type: string; payload?: unknown },
 ) {
   switch (action.type) {
-    case "image":
+    case 'image':
       return { ...state, image: action.payload as string };
-    case "firstName":
+    case 'firstName':
       return { ...state, firstName: action.payload as string };
-    case "lastName":
+    case 'lastName':
       return { ...state, lastName: action.payload as string };
-    case "password":
+    case 'password':
       return { ...state, password: action.payload as string };
-    case "passwordConfirm":
+    case 'passwordConfirm':
       return { ...state, passwordConfirm: action.payload as string };
-    case "email":
+    case 'email':
       return { ...state, email: action.payload as string };
-    case "emailConfirm":
+    case 'emailConfirm':
       return { ...state, emailConfirm: action.payload as string };
-    case "phone":
+    case 'phone':
       return { ...state, phone: action.payload as string };
-    case "birthday":
+    case 'birthday':
       return { ...state, birthday: action.payload as Date };
-    case "openErrorAlert":
+    case 'openErrorAlert':
       return { ...state, errorAlert: true };
-    case "closeErrorAlert":
+    case 'closeErrorAlert':
       return { ...state, errorAlert: false };
-    case "errorMessage":
+    case 'errorMessage':
       return { ...state, errorMessage: action.payload as string };
 
     default:
@@ -72,26 +72,26 @@ function reducer(
   }
 }
 
-const ModalStyles = styled("div")({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  overflowY: "auto",
+const ModalStyles = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  overflowY: 'auto',
 });
 
-const Paper = styled("div")(({ theme }) => ({
+const Paper = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
-  border: "1px solid #000",
+  border: '1px solid #000',
   boxShadow: theme.shadows[5],
   padding: theme.spacing(2, 4, 3),
   marginTop: 50,
-  width: "100%",
-  maxWidth: "600px",
-  minWidth: "300px",
-  maxHeight: "80vh",
-  overflow: "auto",
-  [theme.breakpoints.up("sm")]: {
-    width: "70%",
+  width: '100%',
+  maxWidth: '600px',
+  minWidth: '300px',
+  maxHeight: '80vh',
+  overflow: 'auto',
+  [theme.breakpoints.up('sm')]: {
+    width: '70%',
   },
 }));
 
@@ -117,12 +117,12 @@ const RegisterModal = ({
       const newImage = event.target.files?.[0];
       if (newImage) {
         dispatchLocal({
-          type: "image",
+          type: 'image',
           payload: URL.createObjectURL(newImage),
         });
       }
     },
-    [dispatchLocal]
+    [dispatchLocal],
   );
 
   const uploadImage = async () => {
@@ -131,79 +131,85 @@ const RegisterModal = ({
     try {
       const formData = new FormData();
       const blob = await fetch(newImage).then((b) => b.blob());
-      formData.append("file", blob);
-      const res = await rest.put("/user/image", formData, {
+      formData.append('file', blob);
+      const res = await rest.put('/user/image', formData, {
         headers: {
-          "Content-Type": "multipart/form-data"
-        }
+          'Content-Type': 'multipart/form-data',
+        },
       });
       dispatch(setImage(res.data));
     } catch (error) {
-      if (error instanceof AxiosError) console.error(error.response?.data.message);
+      if (error instanceof AxiosError)
+        console.error(error.response?.data.message);
     }
-  }
+  };
 
   const handlePasswordChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const password = event.target.value;
-      dispatchLocal({ type: "password", payload: password });
+      dispatchLocal({ type: 'password', payload: password });
     },
-    [dispatchLocal]
+    [dispatchLocal],
   );
 
   const handlePasswordConfirmChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const password = event.target.value;
-      dispatchLocal({ type: "passwordConfirm", payload: password });
+      dispatchLocal({ type: 'passwordConfirm', payload: password });
     },
-    [dispatchLocal]
+    [dispatchLocal],
   );
 
   const handleFirstNameChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const firstName = event.target.value;
-      dispatchLocal({ type: "firstName", payload: firstName });
+      dispatchLocal({ type: 'firstName', payload: firstName });
     },
-    [dispatchLocal]
+    [dispatchLocal],
   );
 
   const handleLastNameChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const lastName = event.target.value;
-      dispatchLocal({ type: "lastName", payload: lastName });
+      dispatchLocal({ type: 'lastName', payload: lastName });
     },
-    [dispatchLocal]
+    [dispatchLocal],
   );
 
   const handleEmailChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const email = event.target.value;
-      dispatchLocal({ type: "email", payload: email });
+      dispatchLocal({ type: 'email', payload: email });
     },
-    [dispatchLocal]
+    [dispatchLocal],
   );
 
   const handleEmailConfirmChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const emailConfirm = event.target.value;
-      dispatchLocal({ type: "emailConfirm", payload: emailConfirm });
+      dispatchLocal({ type: 'emailConfirm', payload: emailConfirm });
     },
-    [dispatchLocal]
+    [dispatchLocal],
   );
 
   const handlePhoneChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const phone = event.target.value;
-      dispatchLocal({ type: "phone", payload: phone });
+      dispatchLocal({ type: 'phone', payload: phone });
     },
-    [dispatchLocal]
+    [dispatchLocal],
   );
 
   const handleSubmit = async () => {
     if (state.password === state.passwordConfirm) {
       try {
-        console.log(state.email, state.password, state.firstName, state.lastName);
-        await rest.post("auth/register", {
+        console.log(
+          state.email,
+          state.password,
+          state.firstName,
+          state.lastName,
+        );
+        await rest.post('auth/register', {
           email: state.email,
           password: state.password,
           firstName: state.firstName,
@@ -215,31 +221,31 @@ const RegisterModal = ({
         onClose();
       } catch (error) {
         if (error instanceof AxiosError) {
-          if (typeof error.response?.data.message === "string") {
+          if (typeof error.response?.data.message === 'string') {
             dispatchLocal({
-              type: "errorMessage",
+              type: 'errorMessage',
               payload: `Bei der Registrierung ist ein Fehler aufgetreten: ${error.response?.data.message}`,
             });
           } else {
             dispatchLocal({
-              type: "errorMessage",
+              type: 'errorMessage',
               payload: `Bei der Registrierung ist ein Fehler aufgetreten: ${error.response?.data.message.reduce(
                 (prev: string, curr: string, index: number) =>
                   index === 0 ? curr : `${prev}, ${curr}`,
-                ""
+                '',
               )}`,
             });
           }
           console.error(error);
-          dispatchLocal({ type: "openErrorAlert" });
+          dispatchLocal({ type: 'openErrorAlert' });
         }
       }
     } else {
       dispatchLocal({
-        type: "errorMessage",
-        payload: "Die beiden Passwörter stimmen nicht überein.",
+        type: 'errorMessage',
+        payload: 'Die beiden Passwörter stimmen nicht überein.',
       });
-      dispatchLocal({ type: "openErrorAlert" });
+      dispatchLocal({ type: 'openErrorAlert' });
     }
   };
 
@@ -248,19 +254,19 @@ const RegisterModal = ({
       <ModalStyles>
         <Paper
           onKeyDown={(event) => {
-            if (event.key === "Enter") {
+            if (event.key === 'Enter') {
               handleSubmit();
             }
           }}
         >
-          <Grid2 container sx={{ display: "flex" }}>
-            <Grid2 xs={6} sx={{ alignSelf: "center" }}>
-              <Typography variant="h5" sx={{ mt: 1, mb: 1 }}>
+          <Grid2 container sx={{ display: 'flex' }}>
+            <Grid2 xs={6} sx={{ alignSelf: 'center' }}>
+              <Typography variant='h5' sx={{ mt: 1, mb: 1 }}>
                 Registrierung
               </Typography>
             </Grid2>
-            <Grid2 container justifyContent="right" xs={6}>
-              <IconButton aria-label="close" onClick={onClose}>
+            <Grid2 container justifyContent='right' xs={6}>
+              <IconButton aria-label='close' onClick={onClose}>
                 <CloseIcon />
               </IconButton>
             </Grid2>
@@ -268,7 +274,7 @@ const RegisterModal = ({
           <Grid2 container spacing={2}>
             <Grid2 xs={6}>
               <TextField
-                label="Vorname"
+                label='Vorname'
                 value={state.firstName}
                 onChange={handleFirstNameChange}
                 fullWidth
@@ -277,7 +283,7 @@ const RegisterModal = ({
             </Grid2>
             <Grid2 xs={6}>
               <TextField
-                label="Nachname"
+                label='Nachname'
                 value={state.lastName}
                 onChange={handleLastNameChange}
                 fullWidth
@@ -286,8 +292,8 @@ const RegisterModal = ({
             </Grid2>
             <Grid2 xs={12}>
               <TextField
-                label="E-Mail"
-                type="email"
+                label='E-Mail'
+                type='email'
                 value={state.email}
                 onChange={handleEmailChange}
                 fullWidth
@@ -296,8 +302,8 @@ const RegisterModal = ({
             </Grid2>
             <Grid2 xs={12}>
               <TextField
-                label="E-Mail bestätigen"
-                type="email"
+                label='E-Mail bestätigen'
+                type='email'
                 value={state.emailConfirm}
                 onChange={handleEmailConfirmChange}
                 fullWidth
@@ -307,8 +313,8 @@ const RegisterModal = ({
 
             <Grid2 xs={12}>
               <TextField
-                label="Passwort"
-                type="password"
+                label='Passwort'
+                type='password'
                 value={state.password}
                 onChange={handlePasswordChange}
                 fullWidth
@@ -317,8 +323,8 @@ const RegisterModal = ({
             </Grid2>
             <Grid2 xs={12}>
               <TextField
-                label="Passwort bestätigen"
-                type="password"
+                label='Passwort bestätigen'
+                type='password'
                 value={state.passwordConfirm}
                 onChange={handlePasswordConfirmChange}
                 fullWidth
@@ -327,25 +333,25 @@ const RegisterModal = ({
             </Grid2>
             <Grid2 xs={12}>
               <DatePicker
-                label="Geburtstag"
+                label='Geburtstag'
                 value={state.birthday}
                 onChange={(newValue) => {
-                  dispatchLocal({ type: "birthday", payload: newValue });
+                  dispatchLocal({ type: 'birthday', payload: newValue });
                 }}
               />
             </Grid2>
             <Grid2 xs={12}>
               <TextField
-                label="Telefonnummer"
-                type="tel"
+                label='Telefonnummer'
+                type='tel'
                 value={state.phone}
                 onChange={handlePhoneChange}
                 fullWidth
-                helperText="Wird nicht im Profil angezeigt."
+                helperText='Wird nicht im Profil angezeigt.'
               />
             </Grid2>
             <Grid2 xs={2}>
-              <Typography variant="h6" gutterBottom component="div">
+              <Typography variant='h6' gutterBottom component='div'>
                 Profilbild:
               </Typography>
             </Grid2>
@@ -359,12 +365,12 @@ const RegisterModal = ({
             <Grid2 xs={9}>
               <Box
                 sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  color: "grey.700",
+                  display: 'flex',
+                  alignItems: 'center',
+                  color: 'grey.700',
                 }}
               >
-                <Typography variant="subtitle1">
+                <Typography variant='subtitle1'>
                   mit * markierte Felder sind Pflichtfelder. Handynummer &
                   Profilbild müssen hinzugefügt werden, um Angebote zu
                   erstellen.
@@ -374,10 +380,10 @@ const RegisterModal = ({
             <Grid2 xs={12}>
               <Box>
                 <Button
-                  type="submit"
+                  type='submit'
                   fullWidth
-                  variant="contained"
-                  color="primary"
+                  variant='contained'
+                  color='primary'
                   onClick={handleSubmit}
                 >
                   Registrierung abschließen
@@ -385,23 +391,23 @@ const RegisterModal = ({
                 <Snackbar
                   open={state.errorAlert}
                   autoHideDuration={6000}
-                  anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-                  onClose={() => dispatchLocal({ type: "closeErrorAlert" })}
+                  anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                  onClose={() => dispatchLocal({ type: 'closeErrorAlert' })}
                 >
                   <Alert
-                    onClose={() => dispatchLocal({ type: "closeErrorAlert" })}
-                    severity="error"
-                    sx={{ width: "100%" }}
+                    onClose={() => dispatchLocal({ type: 'closeErrorAlert' })}
+                    severity='error'
+                    sx={{ width: '100%' }}
                   >
                     {state.errorMessage}
                   </Alert>
                 </Snackbar>
               </Box>
             </Grid2>
-            <Divider style={{ width: "100%" }} />
+            <Divider style={{ width: '100%' }} />
             <CenteredColumnGrid xs={12}>
-              <Typography variant="h6">Du bist schon registriert?</Typography>
-              <Button variant="outlined" onClick={onLogin}>
+              <Typography variant='h6'>Du bist schon registriert?</Typography>
+              <Button variant='outlined' onClick={onLogin}>
                 Hier Einloggen
               </Button>
             </CenteredColumnGrid>

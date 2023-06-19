@@ -1,11 +1,11 @@
-import { Provider } from "react-redux";
-import "./App.css";
-import HomePage from "./pages/HomePage/HomePage";
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import userReducer from "./reducer/user";
-import { LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import { Provider } from 'react-redux';
+import './App.css';
+import HomePage from './pages/HomePage/HomePage';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import userReducer from './reducer/user';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 
 const reducer = combineReducers({
   user: userReducer,
@@ -19,7 +19,7 @@ function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Provider store={store}>
-        <div className="App">
+        <div className='App'>
           <ProfilePage></ProfilePage>
         </div>
       </Provider>
