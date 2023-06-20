@@ -1,11 +1,10 @@
 // ProfilePage.tsx
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Typography, Container, Box, Stack } from '@mui/material';
+import { Container, Box } from '@mui/material';
 import { RootState } from '../../App';
-import logo from '../../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ProfileHeader from '../../components/ProfileHeader/ProfileHeader';
+import ProfileInformation from '../../components/ProfileInformation/ProfileInformation';
 
 const ProfilePage: React.FC = () => {
   const currentUser = useSelector((state: RootState) => state.user);
@@ -14,6 +13,7 @@ const ProfilePage: React.FC = () => {
     <Container>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <ProfileHeader></ProfileHeader>
+        <ProfileInformation></ProfileInformation>
       </Box>
     </Container>
   );
