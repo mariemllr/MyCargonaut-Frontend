@@ -7,7 +7,7 @@ import logo from '../../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargo
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ProfileHeader from '../../components/ProfileHeader/ProfileHeader';
 
-const ProfilePage = () => {
+const ProfilePage: React.FC = () => {
   const currentUser = useSelector((state: RootState) => state.user);
 
   return (

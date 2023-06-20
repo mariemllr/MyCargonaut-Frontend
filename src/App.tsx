@@ -1,10 +1,10 @@
 import { Provider } from 'react-redux';
 import './App.css';
-import HomePage from './pages/HomePage/HomePage';
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import userReducer from './reducer/user';
-import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import userReducer from '../src/reducer/user';
+import HomePage from './pages/HomePage/HomePage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 
 const reducer = combineReducers({
@@ -20,7 +20,7 @@ function App() {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Provider store={store}>
         <div className='App'>
-          <HomePage></HomePage>
+          <ProfilePage></ProfilePage>
         </div>
       </Provider>
     </LocalizationProvider>

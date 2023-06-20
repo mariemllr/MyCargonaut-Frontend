@@ -2,7 +2,7 @@ import { Typography, Box, Stack } from '@mui/material';
 import logo from '../../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
-const ProfileHeader = () => {
+const ProfileHeader: React.FC = () => {
   return (
     <Box
       sx={{
