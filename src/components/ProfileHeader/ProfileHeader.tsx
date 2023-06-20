@@ -10,9 +10,8 @@ const ProfileHeader: React.FC = () => {
         borderRadius: '1px',
         display: 'flex',
         justifyContent: 'center',
-        mt: '20vh',
         p: '2vh',
-        width: '70%',
+        width: '100%',
         backgroundColor: '#e2f0d9',
       }}
     >
