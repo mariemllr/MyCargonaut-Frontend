@@ -1,4 +1,4 @@
-import { Typography, Box, Stack } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import logo from '../../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
@@ -10,26 +10,31 @@ const ProfileHeader: React.FC = () => {
         borderRadius: '1px',
         display: 'flex',
         justifyContent: 'center',
-        p: '2vh',
+        alignItems: 'center',
+        p: '3vh',
         width: '100%',
+        position: 'relative', // Make the Box a positioned element
         backgroundColor: '#e2f0d9',
       }}
     >
-      <Stack direction='row' sx={{ alignItems: 'center', width: '100%' }}>
-        <Box sx={{ pl: '2%' }}>
-          <img
-            src={logo}
-            alt='Logo'
-            style={{ width: '65px', height: '30px' }}
-          />
-        </Box>
-        <Box flexGrow={1} display='flex' justifyContent='center'>
-          <Typography variant='h6'> Mein Profil </Typography>
-        </Box>
-        <Box sx={{ pr: '2%', alignItems: 'center' }}>
-          <AccountBoxIcon fontSize='large' />
-        </Box>
-      </Stack>
+      <Box sx={{ position: 'absolute', left: '2%', width: 'auto' }}>
+        <img
+          src={logo}
+          alt='Logo'
+          style={{ maxWidth: '100px', height: 'auto' }}
+        />
+      </Box>
+      <Typography variant='h6'> Mein Profil </Typography>
+      <Box
+        sx={{
+          position: 'absolute',
+          right: '2%',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <AccountBoxIcon fontSize='large' />
+      </Box>
     </Box>
   );
 };

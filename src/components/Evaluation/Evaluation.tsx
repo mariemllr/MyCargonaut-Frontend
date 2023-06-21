@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Rating, Typography } from '@mui/material';
 
 interface EvaluationProps {
