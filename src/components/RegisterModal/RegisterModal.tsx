@@ -21,6 +21,7 @@ import { RootState } from '../../App';
 import UserAvatar from '../UserAvatar/UserAvatar';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { setImage } from '../../reducer/user';
+import uploadImage from '../../utility/UploadImage';
 
 const initialState = {
   image: '',
@@ -125,25 +126,6 @@ const RegisterModal = ({
     [dispatchLocal],
   );
 
-  const uploadImage = async () => {
-    const newImage = state.image;
-    if (!newImage) return;
-    try {
-      const formData = new FormData();
-      const blob = await fetch(newImage).then((b) => b.blob());
-      formData.append('file', blob);
-      const res = await rest.put('/user/image', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      dispatch(setImage(res.data));
-    } catch (error) {
-      if (error instanceof AxiosError)
-        console.error(error.response?.data.message);
-    }
-  };
-
   const handlePasswordChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const password = event.target.value;
@@ -203,20 +185,16 @@ const RegisterModal = ({
   const handleSubmit = async () => {
     if (state.password === state.passwordConfirm) {
       try {
-        console.log(
-          state.email,
-          state.password,
-          state.firstName,
-          state.lastName,
-        );
+        console.log(state.birthday);
         await rest.post('auth/register', {
           email: state.email,
           password: state.password,
           firstName: state.firstName,
           lastName: state.lastName,
           phone: state.phone,
+          birthday: new Date(state.birthday),
         });
-        uploadImage();
+        await uploadImage(state.image, dispatch);
         onRegisterSuccess();
         onClose();
       } catch (error) {

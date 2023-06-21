@@ -1,7 +1,5 @@
 import {
-  Container,
   Box,
-  Grid,
   Table,
   TableBody,
   TableRow,
@@ -12,6 +10,7 @@ import Grid2 from '@mui/material/Unstable_Grid2';
 import { UserState } from '../../reducer/user';
 import UserAvatar from '../UserAvatar/UserAvatar';
 import Evaluation from '../Evaluation/Evaluation';
+import uploadImage from '../../utility/UploadImage';
 
 interface ProfileInformationProps {
   user: UserState;
@@ -22,13 +21,17 @@ const ProfileInformation: React.FC<ProfileInformationProps> = ({ user }) => {
     // Add your functionality here
   };
 
+  const handleImageChange = () => {
+    uploadImage(user.image);
+  };
+
   return (
     <Box
       sx={{
         border: '1.5px solid black',
         borderRadius: '1px',
         width: '100%',
-        p: '2vh',
+        p: '3vh',
       }}
     >
       <Grid2 container>
@@ -101,11 +104,7 @@ const ProfileInformation: React.FC<ProfileInformationProps> = ({ user }) => {
         </Grid2>
         <Grid2 xs={5}>
           <UserAvatar
-            onChange={function (
-              event: React.ChangeEvent<HTMLInputElement>,
-            ): void {
-              throw new Error('Function not implemented.');
-            }}
+            onChange={handleImageChange}
             lastName={user.lastName}
             image={user.image}
           ></UserAvatar>

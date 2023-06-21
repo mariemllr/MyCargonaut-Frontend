@@ -13,7 +13,7 @@ const ProfileHeader: React.FC = () => {
         alignItems: 'center',
         p: '3vh',
         width: '100%',
-        position: 'relative', // Make the Box a positioned element
+        position: 'relative',
         backgroundColor: '#e2f0d9',
       }}
     >

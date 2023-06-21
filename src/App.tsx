@@ -1,18 +1,12 @@
 import { Provider } from 'react-redux';
-import './App.css';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import {
-  applyMiddleware,
-  combineReducers,
-  configureStore,
-} from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userReducer from '../src/reducer/user';
-import HomePage from './pages/HomePage/HomePage';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './styles/theme';
 import reduxLogger from 'redux-logger';
+import RootComponent from './RootComponent';
 
 const reducer = combineReducers({
   user: userReducer,
@@ -39,7 +33,7 @@ function App() {
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Provider store={store}>
           <div className='App'>
-            <ProfilePage></ProfilePage>
+            <RootComponent />
           </div>
         </Provider>
       </LocalizationProvider>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Rating, Typography } from '@mui/material';
 
 interface EvaluationProps {
@@ -25,7 +26,20 @@ const Evaluation = ({ value, name }: EvaluationProps) => {
         <Typography component='legend'>{name}</Typography>
       </Box>
       <Box>
-        <Rating name={name} value={value} precision={0.5} readOnly />
+        <Rating
+          name={name}
+          value={value}
+          precision={0.5}
+          readOnly
+          sx={{
+            '& .MuiRating-iconFilled': {
+              color: '#517f36',
+            },
+            '& .MuiRating-iconHover': {
+              color: '#517f36',
+            },
+          }}
+        />
       </Box>
     </Box>
   );
