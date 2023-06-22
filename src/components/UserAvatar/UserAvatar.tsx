@@ -10,9 +10,18 @@ type UserAvatarProps = {
 
 const UserAvatar = ({ lastName, image, onChange }: UserAvatarProps) => {
   return (
-    <Box sx={{ margin: 1 }}>
+    <Box
+      sx={{
+        margin: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+      }}
+    >
       <Avatar
-        sx={{ width: 100, height: 100, mb: 1, marginLeft: 5, marginRight: 2 }}
+        sx={{ width: 100, height: 100, mb: 1 }}
         alt={lastName}
         src={image}
       />

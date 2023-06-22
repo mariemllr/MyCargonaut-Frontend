@@ -17,6 +17,14 @@ const HomePage: React.FC = () => {
   const [openRegisterModal, setOpenRegisterModal] = React.useState(false);
   const [registerSuccess, setRegisterSuccess] = React.useState(false);
 
+  const handleCloseLoginModal = () => {
+    setOpenLoginModal(false);
+  };
+
+  const handleCloseRegisterModal = () => {
+    setOpenRegisterModal(false);
+  };
+
   const handleOpenLoginModal = () => {
     if (openRegisterModal) handleCloseRegisterModal();
     setOpenLoginModal(true);
@@ -25,14 +33,6 @@ const HomePage: React.FC = () => {
   const handleOpenRegisterModal = () => {
     if (openLoginModal) handleCloseLoginModal();
     setOpenRegisterModal(true);
-  };
-
-  const handleCloseLoginModal = () => {
-    setOpenLoginModal(false);
-  };
-
-  const handleCloseRegisterModal = () => {
-    setOpenRegisterModal(false);
   };
 
   const handleCloseAlert = () => {

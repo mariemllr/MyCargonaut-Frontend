@@ -1,11 +1,12 @@
 import { Provider } from 'react-redux';
-import './App.css';
-import HomePage from './pages/HomePage/HomePage';
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import userReducer from './reducer/user';
-import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import userReducer from '../src/reducer/user';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './styles/theme';
+import reduxLogger from 'redux-logger';
+import RootComponent from './RootComponent';
 
 const reducer = combineReducers({
   user: userReducer,
@@ -13,17 +14,30 @@ const reducer = combineReducers({
 
 const store = configureStore({
   reducer: reducer,
+  middleware: (getDefaultMiddleware) => {
+    const middleware = getDefaultMiddleware({ serializableCheck: false });
+    if (
+      process.env.REACT_APP_ENABLE_REDUX_LOGGING === 'true' &&
+      process.env.NODE_ENV === 'development'
+    ) {
+      middleware.push(reduxLogger);
+    }
+    return middleware;
+  },
 });
+
 export type RootState = ReturnType<typeof reducer>;
 function App() {
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Provider store={store}>
-        <div className='App'>
-          <HomePage></HomePage>
-        </div>
-      </Provider>
-    </LocalizationProvider>
+    <ThemeProvider theme={theme}>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <Provider store={store}>
+          <div className='App'>
+            <RootComponent />
+          </div>
+        </Provider>
+      </LocalizationProvider>
+    </ThemeProvider>
   );
 }
 
