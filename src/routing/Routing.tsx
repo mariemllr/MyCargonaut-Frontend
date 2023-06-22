@@ -4,6 +4,8 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { RootState } from '../App';
 import HomePage from '../pages/HomePage/HomePage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
+import Layout from '../pages/Layout';
+import Angebote from '../pages/Angebote/Angebote';
 import { ROUTES } from '../resources/route-constants';
 import { Box } from '@mui/material';
 
@@ -20,6 +22,7 @@ export function Routing() {
     <Box>
       <Routes>
         <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} />
+        <Route path={ROUTES.ANGEBOTE_ROUTE} element={<Angebote />} />
         <Route path={ROUTES.PROFILEPAGE_ROUTE} element={<ProfilePage />} />
         <Route
           path={ROUTES.OTHER_PROFILEPAGE_ROUTE}

@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Angebote from './pages/Angebote/Angebote';
+import HomePage from './pages/HomePage/HomePage';
+//import Chat from './pages/Chat/Chat';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';

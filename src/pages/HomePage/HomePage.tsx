@@ -57,7 +57,11 @@ const HomePage: React.FC = () => {
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <img src={logo} alt='Logo' style={{ width: '50%', height: '50%' }} />
         </Box>
-        <Button variant='outlined' sx={{ height: '5.5rem' }}>
+        <Button
+          onClick={() => (window.location.href = '/angebote')}
+          variant='outlined'
+          sx={{ height: '5.5rem' }}
+        >
           Angebote
         </Button>
         <Button variant='outlined' sx={{ height: '5.5rem' }}>
