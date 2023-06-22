@@ -16,17 +16,17 @@ export type UserState = {
 };
 
 const initialState: UserState = {
-  firstName: 'Jonas',
-  lastName: 'Koch',
-  email: 'jonaskoch@gmail.com',
-  phone: '01752644826',
-  image: '',
-  id: 1,
-  password: 'fasdfdsf',
+  firstName: undefined,
+  lastName: undefined,
+  email: undefined,
+  phone: undefined,
+  image: undefined,
+  id: undefined,
+  password: undefined,
   isLoggedIn: false,
   smoker: false,
-  note: 'Lorem Ipsum',
-  birthday: new Date(),
+  note: undefined,
+  birthday: undefined,
   rideCount: 0,
 };
 

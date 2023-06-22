@@ -23,6 +23,20 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { setImage } from '../../reducer/user';
 import uploadImage from '../../utility/UploadImage';
 
+export type RegisterType = {
+  image: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  emailConfirm: string;
+  phone: string | null;
+  password: string;
+  passwordConfirm: string;
+  birthday: Date | null;
+  errorAlert: boolean;
+  errorMessage: string;
+};
+
 const initialState = {
   image: '',
   firstName: '',
@@ -30,16 +44,15 @@ const initialState = {
   email: '',
   emailConfirm: '',
   phone: '',
-  username: '',
   password: '',
   passwordConfirm: '',
-  birthday: new Date(),
+  birthday: null,
   errorAlert: false,
   errorMessage: '',
 };
 
 function reducer(
-  state: typeof initialState,
+  state: RegisterType,
   action: { type: string; payload?: unknown },
 ) {
   switch (action.type) {
@@ -191,8 +204,8 @@ const RegisterModal = ({
           password: state.password,
           firstName: state.firstName,
           lastName: state.lastName,
-          phone: state.phone,
-          birthday: new Date(state.birthday),
+          phone: state.phone ? state.phone : null,
+          birthday: state.birthday ? new Date(state.birthday) : null,
         });
         await uploadImage(state.image, dispatch);
         onRegisterSuccess();
@@ -312,7 +325,7 @@ const RegisterModal = ({
             <Grid2 xs={12}>
               <DatePicker
                 label='Geburtstag'
-                value={state.birthday}
+                value={state.birthday || null}
                 onChange={(newValue) => {
                   dispatchLocal({ type: 'birthday', payload: newValue });
                 }}
