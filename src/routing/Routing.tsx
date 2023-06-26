@@ -7,7 +7,8 @@ import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import Layout from '../pages/Layout';
 import Angebote from '../pages/Angebote/Angebote';
 import { ROUTES } from '../resources/route-constants';
-import { Box } from '@mui/material';
+import { Box, Container } from '@mui/material';
+import Navbar from '../components/Navbar/Navbar';
 
 export function Routing() {
   const user = useSelector((state: RootState) => state.user);
@@ -20,15 +21,17 @@ export function Routing() {
 
   return (
     <Box>
-      <Routes>
-        <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} />
-        <Route path={ROUTES.ANGEBOTE_ROUTE} element={<Angebote />} />
-        <Route path={ROUTES.PROFILEPAGE_ROUTE} element={<ProfilePage />} />
-        <Route
-          path={ROUTES.OTHER_PROFILEPAGE_ROUTE}
-          element={<ProfilePage />}
-        />
-      </Routes>
+      {currentRoute !== ROUTES.HOMEPAGE_ROUTE && <Navbar />}
+      <Container maxWidth='xl'>
+        <Routes>
+          <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} />
+          <Route path={ROUTES.PROFILEPAGE_ROUTE} element={<ProfilePage />} />
+          <Route
+            path={ROUTES.OTHER_PROFILEPAGE_ROUTE}
+            element={<ProfilePage />}
+          />
+        </Routes>
+      </Container>
     </Box>
   );
 }

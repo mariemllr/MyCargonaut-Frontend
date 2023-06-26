@@ -4,6 +4,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userReducer from '../src/reducer/user';
 import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import theme from './styles/theme';
 import reduxLogger from 'redux-logger';
 import RootComponent from './RootComponent';
@@ -16,12 +17,7 @@ const store = configureStore({
   reducer: reducer,
   middleware: (getDefaultMiddleware) => {
     const middleware = getDefaultMiddleware({ serializableCheck: false });
-    if (
-      process.env.REACT_APP_ENABLE_REDUX_LOGGING === 'true' &&
-      process.env.NODE_ENV === 'development'
-    ) {
-      middleware.push(reduxLogger);
-    }
+    middleware.push(reduxLogger);
     return middleware;
   },
 });
@@ -30,6 +26,7 @@ export type RootState = ReturnType<typeof reducer>;
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Provider store={store}>
           <div className='App'>

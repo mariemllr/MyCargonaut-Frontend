@@ -1,5 +1,5 @@
 import React, { useCallback, useReducer } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   Alert,
   Box,
@@ -20,7 +20,6 @@ import Snackbar from '@mui/material/Snackbar';
 import { RootState } from '../../App';
 import UserAvatar from '../UserAvatar/UserAvatar';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { setImage } from '../../reducer/user';
 import uploadImage from '../../utility/UploadImage';
 
 export type RegisterType = {
@@ -123,7 +122,6 @@ const RegisterModal = ({
   onRegisterSuccess,
 }: RegisterModalProps) => {
   const user = useSelector((state: RootState) => state.user);
-  const dispatch = useDispatch();
   const [state, dispatchLocal] = useReducer(reducer, initialState);
 
   const handleImageChange = useCallback(
@@ -207,7 +205,7 @@ const RegisterModal = ({
           phone: state.phone ? state.phone : null,
           birthday: state.birthday ? new Date(state.birthday) : null,
         });
-        await uploadImage(state.image, dispatch);
+        await uploadImage(state.image);
         onRegisterSuccess();
         onClose();
       } catch (error) {
