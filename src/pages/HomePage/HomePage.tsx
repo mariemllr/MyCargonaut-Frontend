@@ -11,12 +11,17 @@ import React from 'react';
 import logo from '../../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png';
 import RegisterModal from '../../components/RegisterModal/RegisterModal';
 import LoginModal from '../../components/LoginModal/LoginModal';
+import { useIsLoggedIn } from '../../hooks/auth';
+import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../reducer/user';
 
 const HomePage: React.FC = () => {
+  const dispatch = useDispatch();
   const [openLoginModal, setOpenLoginModal] = React.useState(false);
   const [openRegisterModal, setOpenRegisterModal] = React.useState(false);
   const [registerSuccess, setRegisterSuccess] = React.useState(false);
-
+  const isLoggedIn = useIsLoggedIn();
   const handleCloseLoginModal = () => {
     setOpenLoginModal(false);
   };
@@ -43,6 +48,11 @@ const HomePage: React.FC = () => {
     setRegisterSuccess(true);
   };
 
+  const handleLogout = () => {
+    dispatch(logout());
+    Cookies.remove('token');
+  };
+
   return (
     <Container
       maxWidth='lg'
@@ -65,27 +75,35 @@ const HomePage: React.FC = () => {
         </Button>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Stack spacing={2} sx={{ width: '60%' }}>
-            <Button onClick={handleOpenLoginModal} variant='contained'>
-              Anmelden
-            </Button>
-            <LoginModal
-              open={openLoginModal}
-              onClose={handleCloseLoginModal}
-              onRegister={handleOpenRegisterModal}
-            ></LoginModal>
-            <Button
-              onClick={handleOpenRegisterModal}
-              variant='outlined'
-              sx={{ textDecoration: 'underline' }}
-            >
-              Registrieren
-            </Button>
-            <RegisterModal
-              open={openRegisterModal}
-              onClose={handleCloseRegisterModal}
-              onLogin={handleOpenLoginModal}
-              onRegisterSuccess={handleRegisterSuccess}
-            />
+            {isLoggedIn ? (
+              <Button onClick={handleLogout} variant='contained'>
+                Logout
+              </Button>
+            ) : (
+              <>
+                <Button onClick={handleOpenLoginModal} variant='contained'>
+                  Anmelden
+                </Button>
+                <LoginModal
+                  open={openLoginModal}
+                  onClose={handleCloseLoginModal}
+                  onRegister={handleOpenRegisterModal}
+                ></LoginModal>
+                <Button
+                  onClick={handleOpenRegisterModal}
+                  variant='outlined'
+                  sx={{ textDecoration: 'underline' }}
+                >
+                  Registrieren
+                </Button>
+                <RegisterModal
+                  open={openRegisterModal}
+                  onClose={handleCloseRegisterModal}
+                  onLogin={handleOpenLoginModal}
+                  onRegisterSuccess={handleRegisterSuccess}
+                />
+              </>
+            )}
           </Stack>
         </Box>
       </Stack>
