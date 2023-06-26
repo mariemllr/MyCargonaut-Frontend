@@ -3,4 +3,5 @@ export const ROUTES = {
   PROFILEPAGE_ROUTE: '/profil',
   ANGEBOTE_ROUTE: '/angebote',
   OTHER_PROFILEPAGE_ROUTE: '/profil/:id',
+  FAHRTEN_ANLAGE_ROUTE: '/fahrten_anlage',
 };
