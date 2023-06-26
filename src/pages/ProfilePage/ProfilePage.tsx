@@ -2,13 +2,13 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Box } from '@mui/material';
 import { RootState } from '../../App';
-import ProfileHeader from '../../components/ProfileHeader/ProfileHeader';
-import ProfileInformation from '../../components/ProfileInformation/ProfileInformation';
+import ProfileHeader from '../../components/Profile/ProfileHeader/ProfileHeader';
+import ProfileInformation from '../../components/Profile/ProfileInformation/ProfileInformation';
 import Grid2 from '@mui/material/Unstable_Grid2';
 
 const ProfilePage: React.FC = () => {
   const currentUser = useSelector((state: RootState) => state.user);
-
+  console.log(currentUser);
   return (
     <Box
       sx={{
