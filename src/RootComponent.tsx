@@ -1,20 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Routing } from './routing/Routing';
+import { Container } from '@mui/material';
 
 const RootComponent: React.FC = () => {
   return (
     <Router>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100vh',
-          width: '100vw',
-        }}
-      >
+      <Container>
         <Routing />
-      </div>
+      </Container>
     </Router>
   );
 };
