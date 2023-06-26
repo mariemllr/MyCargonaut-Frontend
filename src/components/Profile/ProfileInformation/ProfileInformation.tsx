@@ -7,10 +7,10 @@ import {
   Button,
 } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2';
-import { UserState } from '../../reducer/user';
-import UserAvatar from '../UserAvatar/UserAvatar';
-import Evaluation from '../Evaluation/Evaluation';
-import uploadImage from '../../utility/UploadImage';
+import { UserState } from '../../../reducer/user';
+import UserAvatar from '../../UserAvatar/UserAvatar';
+import Evaluation from '../../Evaluation/Evaluation';
+import uploadImage from '../../../utility/UploadImage';
 
 interface ProfileInformationProps {
   user: UserState;

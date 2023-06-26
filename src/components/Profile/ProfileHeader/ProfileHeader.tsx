@@ -1,5 +1,5 @@
 import { Typography, Box } from '@mui/material';
-import logo from '../../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png';
+import logo from '../../../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 const ProfileHeader: React.FC = () => {

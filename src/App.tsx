@@ -16,12 +16,7 @@ const store = configureStore({
   reducer: reducer,
   middleware: (getDefaultMiddleware) => {
     const middleware = getDefaultMiddleware({ serializableCheck: false });
-    if (
-      process.env.REACT_APP_ENABLE_REDUX_LOGGING === 'true' &&
-      process.env.NODE_ENV === 'development'
-    ) {
-      middleware.push(reduxLogger);
-    }
+    middleware.push(reduxLogger);
     return middleware;
   },
 });

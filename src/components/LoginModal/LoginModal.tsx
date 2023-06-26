@@ -18,6 +18,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { CenteredColumnGrid } from '../../styles/common';
 import rest from '../../utility/rest';
 import { AxiosError } from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const initialState = {
   email: '',
@@ -72,6 +73,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
   onClose,
   onRegister,
 }: LoginModalProps) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [state, dispatchLocal] = useReducer(reducer, initialState);
 
@@ -96,9 +98,9 @@ const LoginModal: React.FC<LoginModalProps> = ({
         password: state.password,
       });
       const user = await rest.get('user/me');
-      console.log(user);
       dispatch(setUser(user.data as UserState));
       dispatch(login());
+      navigate('/profil');
       onClose();
     } catch (error) {
       if (error instanceof AxiosError) {

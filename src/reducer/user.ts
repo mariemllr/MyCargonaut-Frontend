@@ -64,7 +64,7 @@ export const userSlice = createSlice({
       state.smoker = smoker;
       state.note = note;
       state.birthday = birthday;
-      state.rideCount = rideCount; // And here
+      state.rideCount = rideCount;
     },
     setFirstName: (state, action: PayloadAction<string>) => {
       state.firstName = action.payload;
