@@ -17,7 +17,7 @@ const angebote = [
   { name: 'Angebot 3', description: 'Beschreibung 3' },
 ];
 
-const Angebote: React.FC = () => {
+const Gesuche: React.FC = () => {
   const theme = useTheme();
   return (
     <Box
@@ -47,7 +47,7 @@ const Angebote: React.FC = () => {
           }}
         />
         <Typography variant='h6' style={{ color: 'white' }}>
-          Angebote
+          Gesuche
         </Typography>
       </Box>
       <Box
@@ -106,4 +106,4 @@ const Angebote: React.FC = () => {
   );
 };
 
-export default Angebote;
+export default Gesuche;
