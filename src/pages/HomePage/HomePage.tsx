@@ -15,6 +15,8 @@ import { useIsLoggedIn } from '../../hooks/auth';
 import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../reducer/user';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../resources/route-constants';
 
 const HomePage: React.FC = () => {
   const dispatch = useDispatch();
@@ -22,6 +24,7 @@ const HomePage: React.FC = () => {
   const [openRegisterModal, setOpenRegisterModal] = React.useState(false);
   const [registerSuccess, setRegisterSuccess] = React.useState(false);
   const isLoggedIn = useIsLoggedIn();
+  const navigate = useNavigate();
   const handleCloseLoginModal = () => {
     setOpenLoginModal(false);
   };
@@ -68,13 +71,17 @@ const HomePage: React.FC = () => {
           <img src={logo} alt='Logo' style={{ width: '50%', height: '50%' }} />
         </Box>
         <Button
-          onClick={() => (window.location.href = '/angebote')}
+          onClick={() => navigate(ROUTES.ANGEBOTE_ROUTE)}
           variant='outlined'
           sx={{ height: '5.5rem' }}
         >
           Angebote
         </Button>
-        <Button variant='outlined' sx={{ height: '5.5rem' }}>
+        <Button
+          onClick={() => navigate(ROUTES.GESUCHE_ROUTE)}
+          variant='outlined'
+          sx={{ height: '5.5rem' }}
+        >
           Gesuche
         </Button>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>

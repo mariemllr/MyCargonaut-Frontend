@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Box, Container } from '@mui/material';
+import { Container } from '@mui/material';
 import { RootState } from '../../App';
-import ProfileHeader from '../../components/Profile/ProfileHeader/ProfileHeader';
+import ModuleHeader from '../../components/ModuleHeader';
 import ProfileInformation from '../../components/Profile/ProfileInformation/ProfileInformation';
 import Grid2 from '@mui/material/Unstable_Grid2';
 
@@ -13,7 +13,7 @@ const ProfilePage: React.FC = () => {
     <Container maxWidth='xl' disableGutters>
       <Grid2 container>
         <Grid2 xs={12}>
-          <ProfileHeader></ProfileHeader>
+          <ModuleHeader header={'Mein Profil'}></ModuleHeader>
         </Grid2>
         <Grid2 xs={12}>
           <ProfileInformation user={currentUser}></ProfileInformation>
