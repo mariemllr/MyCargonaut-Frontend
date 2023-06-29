@@ -4,6 +4,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import { Container } from '@mui/material';
+import { ROUTES } from '../../resources/route-constants';
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Navbar: React.FC = () => {
           </Button>
           <Button
             color='inherit'
-            onClick={() => navigate('/profil')}
+            onClick={() => navigate(ROUTES.PROFILEPAGE_ROUTE)}
             sx={{
               p: 2,
               borderColor: 'black',
@@ -45,7 +46,7 @@ const Navbar: React.FC = () => {
           </Button>
           <Button
             color='inherit'
-            onClick={() => navigate('/vehicles')}
+            onClick={() => navigate(ROUTES.FAHRZEUGVERWALTUNG_ROUTE)}
             sx={{
               p: 2,
               borderColor: 'black',
@@ -59,7 +60,7 @@ const Navbar: React.FC = () => {
           </Button>
           <Button
             color='inherit'
-            onClick={() => navigate('/create-entry')}
+            onClick={() => navigate(ROUTES.FAHRTEN_ANLAGE_ROUTE)}
             sx={{
               p: 2,
               borderColor: 'black',

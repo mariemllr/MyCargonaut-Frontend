@@ -1,8 +1,12 @@
 import { Typography, Box } from '@mui/material';
-import logo from '../../../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png';
+import logo from '../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
-const ProfileHeader: React.FC = () => {
+type ModuleHeaderProps = {
+  header: string;
+};
+
+const ModuleHeader: React.FC<ModuleHeaderProps> = ({ header }) => {
   return (
     <Box
       sx={{
@@ -24,7 +28,7 @@ const ProfileHeader: React.FC = () => {
           style={{ maxWidth: '100px', height: 'auto' }}
         />
       </Box>
-      <Typography variant='h6'> Mein Profil </Typography>
+      <Typography variant='h6'> {header} </Typography>
       <Box
         sx={{
           position: 'absolute',
@@ -39,4 +43,4 @@ const ProfileHeader: React.FC = () => {
   );
 };
 
-export default ProfileHeader;
+export default ModuleHeader;
