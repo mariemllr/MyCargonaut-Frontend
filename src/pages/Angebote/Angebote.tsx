@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTheme } from '@mui/material/styles';
 import {
   Box,
   TextField,
@@ -7,18 +6,51 @@ import {
   FormControl,
   Grid,
   Typography,
+  Stack,
 } from '@mui/material';
 import arrow_right_icon from '../../assets/ICONS/arrow_right_icon.png';
-import logo from '../../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png';
+import ModuleHeader from '../../components/ModuleHeader';
+import Grid2 from '@mui/material/Unstable_Grid2';
 
 const angebote = [
-  { name: 'Angebot 1', description: 'Beschreibung 1' },
-  { name: 'Angebot 2', description: 'Beschreibung 2' },
-  { name: 'Angebot 3', description: 'Beschreibung 3' },
+  {
+    start: 'Köln',
+    destination: 'Bochum',
+    date: new Date(),
+    car: 'VW Sprinter',
+    name: 'Paul K.',
+  },
+  {
+    start: 'Berlin',
+    destination: 'Hamburg',
+    date: new Date(),
+    car: 'Mercedes Vito',
+    name: 'Lara S.',
+  },
+  {
+    start: 'München',
+    destination: 'Frankfurt',
+    date: new Date(),
+    car: 'BMW i3',
+    name: 'Otto G.',
+  },
+  {
+    start: 'Dresden',
+    destination: 'Leipzig',
+    date: new Date(),
+    car: 'Tesla Model 3',
+    name: 'Marie L.',
+  },
+  {
+    start: 'Hannover',
+    destination: 'Bremen',
+    date: new Date(),
+    car: 'Opel Corsa',
+    name: 'Peter M.',
+  },
 ];
 
 const Angebote: React.FC = () => {
-  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -27,29 +59,7 @@ const Angebote: React.FC = () => {
         backgroundColor: 'white',
       }}
     >
-      <Box
-        sx={{
-          backgroundColor: theme.palette.primary.main,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          p: '3vh',
-        }}
-      >
-        <img
-          src={logo}
-          alt='Logo'
-          style={{
-            maxWidth: '100px',
-            height: 'auto',
-            position: 'absolute',
-            left: '15%',
-          }}
-        />
-        <Typography variant='h6' style={{ color: 'white' }}>
-          Angebote
-        </Typography>
-      </Box>
+      <ModuleHeader header={'Angebote'}></ModuleHeader>
       <Box
         sx={{
           p: '3vh',
@@ -96,9 +106,57 @@ const Angebote: React.FC = () => {
           </Grid>
         </form>
         {angebote.map((angebot, index) => (
-          <Box key={index} sx={{ marginBottom: '2vh', mt: '3vh' }}>
-            <Typography variant='h6'>{angebot.name}</Typography>
-            <Typography variant='body1'>{angebot.description}</Typography>
+          <Box
+            key={index}
+            sx={{
+              mb: '2vh',
+              mt: '3vh',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <Stack spacing={1}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'start',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: 100,
+                      textOverflow: 'ellipsis',
+                      overflow: 'hidden',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    <Typography noWrap>{angebot.start}</Typography>
+                  </Box>
+
+                  <img
+                    src={arrow_right_icon}
+                    alt='Arrow Icon'
+                    style={{
+                      maxWidth: '50px',
+                      height: 'auto',
+                    }}
+                  />
+
+                  <Typography>{angebot.destination}</Typography>
+                </Box>
+                <Box sx={{ ml: 5 }}>
+                  <Typography>{angebot.car}</Typography>
+                </Box>
+              </Box>
+            </Stack>
           </Box>
         ))}
       </Box>
