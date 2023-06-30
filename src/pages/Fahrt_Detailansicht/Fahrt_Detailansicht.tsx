@@ -1,7 +1,5 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Grid, Button } from '@mui/material';
 import logo from '../../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png';
-import car_icon from '../../assets/ICONS/car-icon.jpg';
-import trailer_icon from '../../assets/ICONS/trailer-icon.jpg';
 import arrow_right_icon from '../../assets/ICONS/arrow_right_icon.png';
 
 const FahrtenDetailansicht: React.FC = () => {
@@ -47,7 +45,10 @@ const FahrtenDetailansicht: React.FC = () => {
             left: '15%',
           }}
         />
-        <Typography variant='h6'> Fahrt Details </Typography>
+        <Typography variant='h6'>
+          {' '}
+          Fahrt mit Max Nach von Heidelberg nach Düsseldorf{' '}
+        </Typography>
       </Box>
       <Box
         sx={{
@@ -55,23 +56,52 @@ const FahrtenDetailansicht: React.FC = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'start',
+          marginLeft: '300px',
+          marginRight: '300px',
         }}
       >
-        <Typography>Startort: {details.startort}</Typography>
-        <Typography>Zielort: {details.zielort}</Typography>
-        <Typography>Startdatum: {details.startdatum}</Typography>
-        <Typography>Fahrt Type: {details.fahrtType}</Typography>
+        <Grid container spacing={3} alignItems='center'>
+          <Grid item xs={4}>
+            <Typography>Startort: {details.startort}</Typography>
+          </Grid>
+          <Grid item xs={1}>
+            <img
+              src={arrow_right_icon}
+              alt='arrow-right-icon'
+              style={{ maxWidth: '30px', height: 'middle' }}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <Typography>Zielort: {details.zielort}</Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography>Startdatum: {details.startdatum}</Typography>
+          </Grid>
+        </Grid>
+        <Typography>Fahrt Typ: {details.fahrtType}</Typography>
         <Typography>Fahrzeug: {details.fahrzeug}</Typography>
         <Typography>Anhänger: {details.anhaenger}</Typography>
         <Typography>Gewicht: {details.gewicht}</Typography>
         <Typography>
-          Frachtgröße (X, Y, Z): {details.frachtgroesse.x},{' '}
+          Maximale Frachtgröße (X, Y, Z): {details.frachtgroesse.x},{' '}
           {details.frachtgroesse.y}, {details.frachtgroesse.z}
         </Typography>
         <Typography>Freie Sitzplätze: {details.freieSitzplaetze}</Typography>
         <Typography>Raucher: {details.raucher ? 'Ja' : 'Nein'}</Typography>
         <Typography>Tiere erlaubt: {details.tiere ? 'Ja' : 'Nein'}</Typography>
         <Typography>Bemerkungen: {details.bemerkungen}</Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '3vh',
+          }}
+        >
+          <Button variant='contained' sx={{ marginRight: '2vh' }}>
+            Angebot machen
+          </Button>
+          <Button variant='contained'>Fahrt antreten</Button>
+        </Box>
       </Box>
     </Box>
   );
