@@ -36,7 +36,9 @@
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .ts,.tsx,.js --fix",
     "prettier": "prettier --write .",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
@@ -85,5 +87,6 @@
     "lint-staged": "^13.2.2",
     "prettier": "2.8.8",
     "ts-jest": "^29.1.0"
-  }
+  },
+  "homepage": "https://tillkwl.github.io/MyCargonaut-Frontend/"
 }
