@@ -7,6 +7,7 @@ import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import Fahrzeugverwaltung from '../pages/Fahrzeugverwaltung/Fahrzeugverwaltung';
 import FahrtenAnlage from '../pages/Fahrten_Anlage/Fahrten_Anlage';
 import FahrtenDetailansicht from '../pages/Fahrt_Detailansicht/Fahrt_Detailansicht';
+import Bewertungen from '../pages/Bewertungen/Bewertungen';
 import Angebote from '../pages/Angebote/Angebote';
 import Gesuche from '../pages/Gesuche/Gesuche';
 import { ROUTES } from '../resources/route-constants';
@@ -31,6 +32,7 @@ export function Routing() {
           <Route path={ROUTES.PROFILEPAGE_ROUTE} element={<ProfilePage />} />
           <Route path={ROUTES.ANGEBOTE_ROUTE} element={<Angebote />} />
           <Route path={ROUTES.GESUCHE_ROUTE} element={<Gesuche />} />
+          <Route path={ROUTES.BEWERTUNGEN_ROUTE} element={<Bewertungen />} />
           <Route
             path={ROUTES.FAHRTEN_DETAILANSICHT_ROUTE}
             element={<FahrtenDetailansicht />}
