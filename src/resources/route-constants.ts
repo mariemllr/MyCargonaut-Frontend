@@ -4,6 +4,7 @@ export const ROUTES = {
   ANGEBOTE_ROUTE: '/angebote',
   GESUCHE_ROUTE: '/gesuche',
   FAHRTEN_DETAILANSICHT_ROUTE: '/fahrt-detailansicht',
+  FAHRTEN_AUFLISTUNG_ROUTE: '/meine-fahrten',
   OTHER_PROFILEPAGE_ROUTE: '/profil/:id',
   FAHRTEN_ANLAGE_ROUTE: '/fahrten_anlage',
   FAHRZEUGVERWALTUNG_ROUTE: '/fahrzeugverwaltung',
