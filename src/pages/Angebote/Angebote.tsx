@@ -7,10 +7,10 @@ import {
   Grid,
   Typography,
   Stack,
+  Divider,
 } from '@mui/material';
 import arrow_right_icon from '../../assets/ICONS/arrow_right_icon.png';
 import ModuleHeader from '../../components/ModuleHeader';
-import Grid2 from '@mui/material/Unstable_Grid2';
 
 const angebote = [
   {
@@ -99,65 +99,81 @@ const Angebote: React.FC = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={3}>
-              <Button variant='contained' color='primary' type='submit'>
+              <Button
+                variant='contained'
+                color='primary'
+                type='submit'
+                sx={{ mt: 2 }}
+              >
                 Suche
               </Button>
             </Grid>
           </Grid>
         </form>
         {angebote.map((angebot, index) => (
-          <Box
-            key={index}
-            sx={{
-              mb: '2vh',
-              mt: '3vh',
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
-            <Stack spacing={1}>
+          <Grid container key={index} sx={{ mb: '2vh', mt: '3vh' }}>
+            <Grid item xs={12} md={6}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
+                  flexDirection: 'column',
                   alignItems: 'center',
                 }}
               >
                 <Box
                   sx={{
                     display: 'flex',
-                    justifyContent: 'start',
+                    justifyContent: 'space-around',
+                    width: '80%',
                     alignItems: 'center',
                   }}
                 >
-                  <Box
-                    sx={{
-                      width: 100,
-                      textOverflow: 'ellipsis',
-                      overflow: 'hidden',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    <Typography noWrap>{angebot.start}</Typography>
+                  <Typography>{angebot.start}</Typography>
+                  <Box>
+                    <img
+                      src={arrow_right_icon}
+                      alt='Arrow Icon'
+                      style={{
+                        maxWidth: '50px',
+                        height: 'auto',
+                      }}
+                    />
                   </Box>
-
-                  <img
-                    src={arrow_right_icon}
-                    alt='Arrow Icon'
-                    style={{
-                      maxWidth: '50px',
-                      height: 'auto',
-                    }}
-                  />
-
                   <Typography>{angebot.destination}</Typography>
                 </Box>
-                <Box sx={{ ml: 5 }}>
-                  <Typography>{angebot.car}</Typography>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-start',
+                    textAlign: 'flex-start',
+                  }}
+                >
+                  <Typography> {angebot.date.toLocaleDateString()} </Typography>
                 </Box>
               </Box>
-            </Stack>
-          </Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Box>
+                  <Typography>{angebot.car}</Typography>
+                </Box>
+                <Box>
+                  <Typography>{angebot.name}</Typography>
+                </Box>
+              </Box>
+            </Grid>
+            {index !== angebote.length - 1 && (
+              <Divider sx={{ width: '100%' }} />
+            )}
+          </Grid>
         ))}
       </Box>
     </Box>
