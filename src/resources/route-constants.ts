@@ -7,6 +7,8 @@ export const ROUTES = {
   BEWERTUNG_ABGEBEN_ROUTE: '/bewertung-abgeben',
   FAHRTEN_DETAILANSICHT_ROUTE: '/fahrt-detailansicht',
   OTHER_PROFILEPAGE_ROUTE: '/profil/:id',
-  FAHRTEN_ANLAGE_ROUTE: '/fahrten_anlage',
+  FAHRTEN_ANLAGE_ROUTE: '/fahrten-anlage',
   FAHRZEUGVERWALTUNG_ROUTE: '/fahrzeugverwaltung',
+  BEZAHLUNG_FIXPREIS_ROUTE: '/bezahlung-fixpreis',
+  BEZAHLUNG_VARIABEL_ROUTE: '/bezahlung-variabel',
 };
