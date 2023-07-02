@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTheme } from '@mui/material/styles';
 import {
   Box,
   TextField,
@@ -9,7 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import arrow_right_icon from '../../assets/ICONS/arrow_right_icon.png';
-import logo from '../../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png';
+import ModuleHeader from '../../components/ModuleHeader';
 
 const angebote = [
   { name: 'Angebot 1', description: 'Beschreibung 1' },
@@ -18,7 +17,6 @@ const angebote = [
 ];
 
 const Gesuche: React.FC = () => {
-  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -27,29 +25,7 @@ const Gesuche: React.FC = () => {
         backgroundColor: 'white',
       }}
     >
-      <Box
-        sx={{
-          backgroundColor: theme.palette.primary.main,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          p: '3vh',
-        }}
-      >
-        <img
-          src={logo}
-          alt='Logo'
-          style={{
-            maxWidth: '100px',
-            height: 'auto',
-            position: 'absolute',
-            left: '15%',
-          }}
-        />
-        <Typography variant='h6' style={{ color: 'white' }}>
-          Gesuche
-        </Typography>
-      </Box>
+      <ModuleHeader header={'Gesuche'}></ModuleHeader>
       <Box
         sx={{
           p: '3vh',
