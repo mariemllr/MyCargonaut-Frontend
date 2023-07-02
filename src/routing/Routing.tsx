@@ -40,6 +40,7 @@ export function Routing() {
           <Route
             path={ROUTES.BEZAHLUNG_VARIABEL_ROUTE}
             element={<VariableZahlung />}
+          />
           <Route path={ROUTES.BEWERTUNGEN_ROUTE} element={<Bewertungen />} />
           <Route
             path={ROUTES.BEWERTUNG_ABGEBEN_ROUTE}
