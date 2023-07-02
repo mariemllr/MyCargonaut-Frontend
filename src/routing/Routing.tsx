@@ -7,6 +7,8 @@ import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import Fahrzeugverwaltung from '../pages/Fahrzeugverwaltung/Fahrzeugverwaltung';
 import FahrtenAnlage from '../pages/Fahrten_Anlage/Fahrten_Anlage';
 import FahrtenDetailansicht from '../pages/Fahrt_Detailansicht/Fahrt_Detailansicht';
+import Bewertungen from '../pages/Bewertungen/Bewertungen';
+import BewertungAbgeben from '../pages/Bewertungen/Bewertung_Abgeben';
 import Angebote from '../pages/Angebote/Angebote';
 import Gesuche from '../pages/Gesuche/Gesuche';
 import Zahlung from '../pages/Bezahlung/Bezahlung_Fixpreis';
@@ -37,6 +39,10 @@ export function Routing() {
           <Route
             path={ROUTES.BEZAHLUNG_VARIABEL_ROUTE}
             element={<VariableZahlung />}
+          <Route path={ROUTES.BEWERTUNGEN_ROUTE} element={<Bewertungen />} />
+          <Route
+            path={ROUTES.BEWERTUNG_ABGEBEN_ROUTE}
+            element={<BewertungAbgeben />}
           />
           <Route
             path={ROUTES.FAHRTEN_DETAILANSICHT_ROUTE}
