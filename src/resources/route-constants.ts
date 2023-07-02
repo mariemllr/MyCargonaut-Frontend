@@ -6,6 +6,7 @@ export const ROUTES = {
   BEWERTUNGEN_ROUTE: '/bewertungen',
   BEWERTUNG_ABGEBEN_ROUTE: '/bewertung-abgeben',
   FAHRTEN_DETAILANSICHT_ROUTE: '/fahrt-detailansicht',
+  FAHRTEN_AUFLISTUNG_ROUTE: '/meine-fahrten',
   OTHER_PROFILEPAGE_ROUTE: '/profil/:id',
   FAHRTEN_ANLAGE_ROUTE: '/fahrten-anlage',
   FAHRZEUGVERWALTUNG_ROUTE: '/fahrzeugverwaltung',
