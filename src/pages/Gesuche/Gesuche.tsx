@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   TextField,
@@ -6,17 +6,42 @@ import {
   FormControl,
   Grid,
   Typography,
+  Stack,
+  Divider,
 } from '@mui/material';
 import arrow_right_icon from '../../assets/ICONS/arrow_right_icon.png';
 import ModuleHeader from '../../components/ModuleHeader';
+import rest from '../../utility/rest';
 
+/** 
 const angebote = [
   { name: 'Angebot 1', description: 'Beschreibung 1' },
   { name: 'Angebot 2', description: 'Beschreibung 2' },
   { name: 'Angebot 3', description: 'Beschreibung 3' },
-];
+]; */
+
+type Gesuch = {
+  startlocation: string;
+  endlocation: string;
+  date: Date;
+  userId: number;
+};
 
 const Gesuche: React.FC = () => {
+  const [gesuche, setGesuche] = useState<Gesuch[]>([]);
+
+  useEffect(() => {
+    const fetchGesuche = async () => {
+      try {
+        const response = await rest.get('IHR_BACKEND_URL');
+        setGesuche(response.data);
+      } catch (error) {
+        console.error('Fehler beim Abrufen der Gesuche:', error);
+      }
+    };
+
+    fetchGesuche();
+  }, []);
   return (
     <Box
       sx={{
@@ -71,11 +96,71 @@ const Gesuche: React.FC = () => {
             </Grid>
           </Grid>
         </form>
-        {angebote.map((angebot, index) => (
-          <Box key={index} sx={{ marginBottom: '2vh', mt: '3vh' }}>
-            <Typography variant='h6'>{angebot.name}</Typography>
-            <Typography variant='body1'>{angebot.description}</Typography>
-          </Box>
+        {gesuche.map((gesuch, index) => (
+          <Grid container key={index} sx={{ mb: '2vh', mt: '3vh' }}>
+            <Grid item xs={12} md={6}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-around',
+                    width: '80%',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Typography>{gesuch.startlocation}</Typography>
+                  <Box>
+                    <img
+                      src={arrow_right_icon}
+                      alt='Arrow Icon'
+                      style={{
+                        maxWidth: '50px',
+                        height: 'auto',
+                      }}
+                    />
+                  </Box>
+                  <Typography>{gesuch.endlocation}</Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-start',
+                    textAlign: 'flex-start',
+                  }}
+                >
+                  <Typography>
+                    {' '}
+                    {new Date(gesuch.date).toLocaleDateString()}{' '}
+                  </Typography>
+                </Box>
+              </Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Box>
+                  <Typography>{gesuch.userId}</Typography>
+                </Box>
+                <Box>
+                  <Typography>{gesuch.userId}</Typography>
+                </Box>
+              </Box>
+            </Grid>
+            {index !== gesuche.length - 1 && <Divider sx={{ width: '100%' }} />}
+          </Grid>
         ))}
       </Box>
     </Box>
