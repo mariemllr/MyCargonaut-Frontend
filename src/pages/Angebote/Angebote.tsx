@@ -58,7 +58,6 @@ const Angebote: React.FC = () => {
     startlocation: string;
     endlocation: string;
     date: Date;
-    car: string;
     userId: number;
   };
   const [angebote, setAngebote] = useState<Angebot[]>([]);
@@ -191,10 +190,7 @@ const Angebote: React.FC = () => {
                 }}
               >
                 <Box>
-                  <Typography>{angebot.userId}</Typography>
-                </Box>
-                <Box>
-                  <Typography>{angebot.userId}</Typography>
+                  <Typography>Max Mustermann</Typography>
                 </Box>
               </Box>
             </Grid>

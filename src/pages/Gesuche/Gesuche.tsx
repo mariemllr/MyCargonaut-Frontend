@@ -33,7 +33,7 @@ const Gesuche: React.FC = () => {
   useEffect(() => {
     const fetchGesuche = async () => {
       try {
-        const response = await rest.get('IHR_BACKEND_URL');
+        const response = await rest.get('/request');
         setGesuche(response.data);
       } catch (error) {
         console.error('Fehler beim Abrufen der Gesuche:', error);
