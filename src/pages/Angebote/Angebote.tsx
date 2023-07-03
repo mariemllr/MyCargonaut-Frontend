@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   TextField,
@@ -11,7 +11,9 @@ import {
 } from '@mui/material';
 import arrow_right_icon from '../../assets/ICONS/arrow_right_icon.png';
 import ModuleHeader from '../../components/ModuleHeader';
+import rest from '../../utility/rest';
 
+/** 
 const angebote = [
   {
     start: 'Köln',
@@ -49,8 +51,31 @@ const angebote = [
     name: 'Peter M.',
   },
 ];
+*/
 
 const Angebote: React.FC = () => {
+  type Angebot = {
+    start: string;
+    destination: string;
+    date: Date;
+    car: string;
+    name: string;
+  };
+  const [angebote, setAngebote] = useState<Angebot[]>([]);
+
+  useEffect(() => {
+    const fetchAngebote = async () => {
+      try {
+        const response = await rest.get('/offers');
+        setAngebote(response.data);
+      } catch (error) {
+        console.error('Fehler beim Abrufen der Angebote:', error);
+      }
+    };
+
+    fetchAngebote();
+  }, []);
+
   return (
     <Box
       sx={{
