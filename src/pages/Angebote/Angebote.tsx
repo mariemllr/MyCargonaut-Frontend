@@ -55,18 +55,18 @@ const angebote = [
 
 const Angebote: React.FC = () => {
   type Angebot = {
-    start: string;
-    destination: string;
+    startlocation: string;
+    endlocation: string;
     date: Date;
     car: string;
-    name: string;
+    userId: number;
   };
   const [angebote, setAngebote] = useState<Angebot[]>([]);
 
   useEffect(() => {
     const fetchAngebote = async () => {
       try {
-        const response = await rest.get('/offers');
+        const response = await rest.get('/offer');
         setAngebote(response.data);
       } catch (error) {
         console.error('Fehler beim Abrufen der Angebote:', error);
@@ -154,7 +154,7 @@ const Angebote: React.FC = () => {
                     alignItems: 'center',
                   }}
                 >
-                  <Typography>{angebot.start}</Typography>
+                  <Typography>{angebot.startlocation}</Typography>
                   <Box>
                     <img
                       src={arrow_right_icon}
@@ -165,7 +165,7 @@ const Angebote: React.FC = () => {
                       }}
                     />
                   </Box>
-                  <Typography>{angebot.destination}</Typography>
+                  <Typography>{angebot.endlocation}</Typography>
                 </Box>
                 <Box
                   sx={{
@@ -174,7 +174,10 @@ const Angebote: React.FC = () => {
                     textAlign: 'flex-start',
                   }}
                 >
-                  <Typography> {angebot.date.toLocaleDateString()} </Typography>
+                  <Typography>
+                    {' '}
+                    {new Date(angebot.date).toLocaleDateString()}{' '}
+                  </Typography>
                 </Box>
               </Box>
             </Grid>
@@ -188,10 +191,10 @@ const Angebote: React.FC = () => {
                 }}
               >
                 <Box>
-                  <Typography>{angebot.car}</Typography>
+                  <Typography>{angebot.userId}</Typography>
                 </Box>
                 <Box>
-                  <Typography>{angebot.name}</Typography>
+                  <Typography>{angebot.userId}</Typography>
                 </Box>
               </Box>
             </Grid>
