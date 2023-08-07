@@ -11,7 +11,7 @@ type State = {
 };
 
 const defaultState: State = {
-  rideAlignment: '',
+  rideAlignment: 'offer',
 };
 
 const FahrtenAnlage: React.FC = () => {
@@ -26,10 +26,6 @@ const FahrtenAnlage: React.FC = () => {
       ...prevState,
       [group]: newAlignment,
     }));
-  };
-
-  const handleSubmit = () => {
-    //TODO
   };
 
   return (

@@ -18,6 +18,7 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import EventIcon from '@mui/icons-material/Event';
 import { useState } from 'react';
+import rest from '../../utility/rest';
 
 const StyledToggleButton = styled(ToggleButton)({
   '&.Mui-selected': {
@@ -75,19 +76,41 @@ const CreateOffer: React.FC = () => {
     }));
   };
 
-  const handleSubmit = () => {
-    const postData = {
-      startlocation: state.startLocation,
-      endlocation: state.destination,
-      date: state.startDate,
-      weight: state.cargoWeight,
-      mass_x: state.cargoSizeX,
-      mass_y: state.cargoSizeY,
-      mass_z: state.cargoSizeZ,
-      smoking: state.smokerAlignment,
-      animals: state.animalAlignment,
-      notes: state.remark,
-    };
+  const handleSubmit = async () => {
+    let priceKey = null;
+
+    switch (state.priceType) {
+      case 1:
+        priceKey = 'price_absolute';
+        break;
+      case 2:
+        priceKey = 'price_per_freight';
+        break;
+      case 3:
+        priceKey = 'price_per_person';
+        break;
+      default:
+        break;
+    }
+    try {
+      const postData = {
+        startlocation: state.startLocation,
+        endlocation: state.destination,
+        date: state.startDate,
+        ...(priceKey ? { [priceKey]: state.price } : {}),
+        seats: state.seats,
+        weight: state.cargoWeight,
+        mass_x: state.cargoSizeX,
+        mass_y: state.cargoSizeY,
+        mass_z: state.cargoSizeZ,
+        smoking: state.smokerAlignment,
+        animals: state.animalAlignment,
+        notes: state.remark,
+      };
+      await rest.post('offer', postData);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
