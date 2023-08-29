@@ -167,7 +167,7 @@ const Angebote: React.FC = () => {
                     alignItems: 'center',
                   }}
                 >
-                  <Typography>{angebot.start}</Typography>
+                  <Typography>{angebot.startlocation}</Typography>
                   <Box>
                     <img
                       src={arrow_right_icon}
@@ -178,7 +178,7 @@ const Angebote: React.FC = () => {
                       }}
                     />
                   </Box>
-                  <Typography>{angebot.destination}</Typography>
+                  <Typography>{angebot.endlocation}</Typography>
                 </Box>
                 <Box
                   sx={{
@@ -187,7 +187,10 @@ const Angebote: React.FC = () => {
                     textAlign: 'flex-start',
                   }}
                 >
-                  <Typography> {angebot.date.toLocaleDateString()} </Typography>
+                  <Typography>
+                    {angebot.date?.toLocaleDateString() ?? 'Date not available'}
+                  </Typography>
+
                 </Box>
               </Box>
             </Grid>
@@ -201,10 +204,10 @@ const Angebote: React.FC = () => {
                 }}
               >
                 <Box>
-                  <Typography>{angebot.car}</Typography>
+                  <Typography>{angebot.animals}</Typography>
                 </Box>
                 <Box>
-                  <Typography>{angebot.name}</Typography>
+                  <Typography>{angebot.id}</Typography>
                 </Box>
               </Box>
             </Grid>

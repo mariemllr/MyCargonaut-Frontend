@@ -129,47 +129,47 @@ var Angebote = function () {
                             react_1["default"].createElement(material_1.TextField, { id: 'datum', label: 'Datum', type: 'date', InputLabelProps: { shrink: true }, variant: 'outlined' }))),
                     react_1["default"].createElement(material_1.Grid, { item: true, xs: 12, sm: 3 },
                         react_1["default"].createElement(material_1.Button, { variant: 'contained', color: 'primary', type: 'submit', sx: { mt: 2 } }, "Suche")))),
-            angebote.map(function (angebot, index) { return (react_1["default"].createElement(material_1.Grid, { container: true, key: index, sx: { mb: '2vh', mt: '3vh' } },
-                react_1["default"].createElement(material_1.Grid, { item: true, xs: 12, md: 6 },
-                    react_1["default"].createElement(material_1.Box, { sx: {
-                            display: 'flex',
-                            justifyContent: 'center',
-                            flexDirection: 'column',
-                            alignItems: 'center'
-                        } },
+            angebote.map(function (angebot, index) {
+                var _a, _b;
+                return (react_1["default"].createElement(material_1.Grid, { container: true, key: index, sx: { mb: '2vh', mt: '3vh' } },
+                    react_1["default"].createElement(material_1.Grid, { item: true, xs: 12, md: 6 },
                         react_1["default"].createElement(material_1.Box, { sx: {
                                 display: 'flex',
-                                justifyContent: 'space-around',
-                                width: '80%',
+                                justifyContent: 'center',
+                                flexDirection: 'column',
                                 alignItems: 'center'
                             } },
-                            react_1["default"].createElement(material_1.Typography, null, angebot.start),
-                            react_1["default"].createElement(material_1.Box, null,
-                                react_1["default"].createElement("img", { src: arrow_right_icon_png_1["default"], alt: 'Arrow Icon', style: {
-                                        maxWidth: '50px',
-                                        height: 'auto'
-                                    } })),
-                            react_1["default"].createElement(material_1.Typography, null, angebot.destination)),
+                            react_1["default"].createElement(material_1.Box, { sx: {
+                                    display: 'flex',
+                                    justifyContent: 'space-around',
+                                    width: '80%',
+                                    alignItems: 'center'
+                                } },
+                                react_1["default"].createElement(material_1.Typography, null, angebot.startlocation),
+                                react_1["default"].createElement(material_1.Box, null,
+                                    react_1["default"].createElement("img", { src: arrow_right_icon_png_1["default"], alt: 'Arrow Icon', style: {
+                                            maxWidth: '50px',
+                                            height: 'auto'
+                                        } })),
+                                react_1["default"].createElement(material_1.Typography, null, angebot.endlocation)),
+                            react_1["default"].createElement(material_1.Box, { sx: {
+                                    display: 'flex',
+                                    justifyContent: 'flex-start',
+                                    textAlign: 'flex-start'
+                                } },
+                                react_1["default"].createElement(material_1.Typography, null, (_b = (_a = angebot.date) === null || _a === void 0 ? void 0 : _a.toLocaleDateString()) !== null && _b !== void 0 ? _b : 'Date not available')))),
+                    react_1["default"].createElement(material_1.Grid, { item: true, xs: 12, md: 6 },
                         react_1["default"].createElement(material_1.Box, { sx: {
                                 display: 'flex',
-                                justifyContent: 'flex-start',
-                                textAlign: 'flex-start'
+                                justifyContent: 'center',
+                                flexDirection: 'column',
+                                alignItems: 'center'
                             } },
-                            react_1["default"].createElement(material_1.Typography, null,
-                                " ",
-                                angebot.date.toLocaleDateString(),
-                                " ")))),
-                react_1["default"].createElement(material_1.Grid, { item: true, xs: 12, md: 6 },
-                    react_1["default"].createElement(material_1.Box, { sx: {
-                            display: 'flex',
-                            justifyContent: 'center',
-                            flexDirection: 'column',
-                            alignItems: 'center'
-                        } },
-                        react_1["default"].createElement(material_1.Box, null,
-                            react_1["default"].createElement(material_1.Typography, null, angebot.car)),
-                        react_1["default"].createElement(material_1.Box, null,
-                            react_1["default"].createElement(material_1.Typography, null, angebot.name)))),
-                index !== angebote.length - 1 && (react_1["default"].createElement(material_1.Divider, { sx: { width: '100%' } })))); }))));
+                            react_1["default"].createElement(material_1.Box, null,
+                                react_1["default"].createElement(material_1.Typography, null, angebot.animals)),
+                            react_1["default"].createElement(material_1.Box, null,
+                                react_1["default"].createElement(material_1.Typography, null, angebot.id)))),
+                    index !== angebote.length - 1 && (react_1["default"].createElement(material_1.Divider, { sx: { width: '100%' } }))));
+            }))));
 };
 exports["default"] = Angebote;
