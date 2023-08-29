@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   TextField,
@@ -11,8 +11,30 @@ import {
 } from '@mui/material';
 import arrow_right_icon from '../../assets/ICONS/arrow_right_icon.png';
 import ModuleHeader from '../../components/ModuleHeader';
+import rest from '../../utility/rest';
+interface Offer {
+  id: number;
+  userId: number;
+  userId_accepter?: number;
+  startlocation?: string;
+  endlocation?: string;
+  date?: Date;
+  price_absolute?: number;
+  price_per_freight?: number;
+  price_per_person?: number;
+  seats?: number;
+  stops?: string;
+  weight?: number;
+  mass_x?: number;
+  mass_y?: number;
+  mass_z?: number;
+  smoking?: boolean;
+  animals?: boolean;
+  status?: string;
+  notes?: string;
+}
 
-const angebote = [
+const angeboteTest = [
   {
     start: 'Köln',
     destination: 'Bochum',
@@ -50,7 +72,23 @@ const angebote = [
   },
 ];
 
+
+
 const Angebote: React.FC = () => {
+  const [angebote, setAngebote] = useState<Offer[]>([]);
+
+  useEffect(() => {
+    const fetchOffers = async () => {
+      try {
+        const response = await rest.get('offers');
+        setAngebote(response.data);
+      } catch (e) {
+        console.error('An error occurred while fetching offers:', e);
+      }
+    };
+
+    fetchOffers();
+  }, []);
   return (
     <Box
       sx={{

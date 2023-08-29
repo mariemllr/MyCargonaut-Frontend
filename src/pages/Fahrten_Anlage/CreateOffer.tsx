@@ -107,7 +107,7 @@ const CreateOffer: React.FC = () => {
         animals: state.animalAlignment,
         notes: state.remark,
       };
-      await rest.post('offer', postData);
+      await rest.post('offer/create', postData);
     } catch (error) {
       console.error(error);
     }
