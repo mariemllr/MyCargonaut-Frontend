@@ -10,6 +10,7 @@ import {
   Button,
 } from '@mui/material';
 import logo from '../../assets/MyCargonaut_Logo/Export/0.75x/semi_androidMyCargonautldpi.png';
+import PayPal from './paypal';
 
 const Zahlung: React.FC = () => {
   const theme = useTheme();
@@ -56,36 +57,8 @@ const Zahlung: React.FC = () => {
         }}
       >
         <Typography variant='h6'>Die Fahrt mit Max kostet dich 50€</Typography>
-        <Typography
-          variant='body1'
-          style={{ marginTop: '20px', marginBottom: '20px' }}
-        >
-          Wie möchtest du bezahlen?
-        </Typography>
-        <FormControl component='fieldset'>
-          <RadioGroup
-            aria-label='Zahlung'
-            name='zahlung'
-            value={value}
-            onChange={handleChange}
-          >
-            <FormControlLabel
-              value='Paypal'
-              control={<Radio />}
-              label='Paypal'
-            />
-            <FormControlLabel
-              value='Kreditkarte'
-              control={<Radio />}
-              label='Kreditkarte'
-            />
-            <FormControlLabel value='Bar' control={<Radio />} label='Bar' />
-          </RadioGroup>
-        </FormControl>
+        <PayPal></PayPal>
       </Box>
-      <Button variant='contained' color='primary' style={{ margin: '20px' }}>
-        Bezahlung abschließen
-      </Button>
     </Box>
   );
 };
