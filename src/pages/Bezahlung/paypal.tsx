@@ -1,55 +1,48 @@
-import React, { useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import {
   PayPalScriptProvider,
   PayPalButtons,
   FUNDING,
 } from '@paypal/react-paypal-js';
 import rest from '../../utility/rest';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import {
+  catchError,
+  firstValueFrom,
+  lastValueFrom,
+  map,
+  throwError,
+} from 'rxjs';
 
-// Renders errors or successful transactions on the screen.
-function Message({ content }: { content: string }) {
-  return <p>{content}</p>;
-}
+class PayPal extends Component {
+  async createOrder(data: any): Promise<any> {
+    // Order is created on the server and the order id is returned
+    const response = await rest.put('/offer/6/accept');
+    return response;
+  }
 
-function PayPal() {
-  const initialOptions = {
-    'client-id':
-      'Afd9v7pG-ip7BGWfNIIZiIhxccqwFwpHd-XUH4hKpSp6d4kOK-Faw96uFsQDZsbEEfjApHGGp7LLm2Rg',
-    'enable-funding': FUNDING.PAYPAL,
-    'data-sdk-integration-source': 'integrationbuilder_sc',
-  };
+  async onApprove(data: any): Promise<any> {
+    // Order is captured on the server
+    const response = await rest.put('/offer/5/accept');
+    return response;
+  }
 
-  const [message, setMessage] = useState<string>('');
-
-  return (
-    <div className='PayPal'>
-      <PayPalScriptProvider options={initialOptions}>
+  render() {
+    return (
+      <PayPalScriptProvider
+        options={{
+          'client-id':
+            'Afd9v7pG-ip7BGWfNIIZiIhxccqwFwpHd-XUH4hKpSp6d4kOK-Faw96uFsQDZsbEEfjApHGGp7LLm2Rg',
+        }}
+      >
         <PayPalButtons
-          style={{
-            shape: 'rect',
-            color: FUNDING.PAYLATER === FUNDING.PAYPAL ? 'gold' : undefined,
-            layout: 'vertical', // default value. Can be changed to horizontal
-          }}
-          createOrder={async () => {
-            try {
-              const response = await rest.put('offer/4/accept');
-              setMessage('geklappt');
-              return 'Success';
-            } catch (error) {
-              console.error(error);
-              setMessage(`Could not initiate PayPal Checkout...${error}`);
-              return 'Error';
-            }
-          }}
-          onApprove={async (data, actions) => {
-            setMessage(`Transaction successful.`);
-          }}
+          createOrder={(data, actions) => this.createOrder(data)}
+          onApprove={(data, actions) => this.onApprove(data)}
         />
       </PayPalScriptProvider>
-      <Message content={message} />
-    </div>
-  );
+    );
+  }
 }
 
 export default PayPal;
