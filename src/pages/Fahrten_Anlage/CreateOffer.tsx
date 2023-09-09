@@ -10,23 +10,23 @@ import {
   FormHelperText,
   InputLabel,
   styled,
-} from '@mui/material';
-import car_icon from '../../assets/ICONS/car-icon.jpg';
-import trailer_icon from '../../assets/ICONS/trailer-icon.jpg';
-import arrow_right_icon from '../../assets/ICONS/arrow_right_icon.png';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import EventIcon from '@mui/icons-material/Event';
-import { useState } from 'react';
-import rest from '../../utility/rest';
+} from "@mui/material";
+import car_icon from "../../assets/ICONS/car-icon.jpg";
+import trailer_icon from "../../assets/ICONS/trailer-icon.jpg";
+import arrow_right_icon from "../../assets/ICONS/arrow_right_icon.png";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import EventIcon from "@mui/icons-material/Event";
+import { useState } from "react";
+import rest from "../../utility/rest";
 
 const StyledToggleButton = styled(ToggleButton)({
-  '&.Mui-selected': {
-    backgroundColor: '#e2f0d9',
+  "&.Mui-selected": {
+    backgroundColor: "#e2f0d9",
   },
 });
 
-type State = {
+type offerState = {
   smokerAlignment: boolean | null;
   animalAlignment: boolean | null;
   cargoWeight: number;
@@ -44,17 +44,17 @@ type State = {
   cargoSizeZ: number | null;
 };
 
-const defaultState: State = {
+const defaultState: offerState = {
   smokerAlignment: null,
   animalAlignment: null,
   cargoWeight: 50,
   vehicle: null,
   trailer: null,
   seats: null,
-  startLocation: '',
-  destination: '',
+  startLocation: "",
+  destination: "",
   startDate: null,
-  remark: '',
+  remark: "",
   price: null,
   priceType: null,
   cargoSizeX: null,
@@ -63,12 +63,12 @@ const defaultState: State = {
 };
 
 const CreateOffer: React.FC = () => {
-  const [state, setState] = useState<State>(defaultState);
+  const [state, setState] = useState<offerState>(defaultState);
 
   const handleToggleButtonChange = (
     group: string,
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: string,
+    newAlignment: string
   ) => {
     setState((prevState) => ({
       ...prevState,
@@ -81,13 +81,13 @@ const CreateOffer: React.FC = () => {
 
     switch (state.priceType) {
       case 1:
-        priceKey = 'price_absolute';
+        priceKey = "price_absolute";
         break;
       case 2:
-        priceKey = 'price_per_freight';
+        priceKey = "price_per_freight";
         break;
       case 3:
-        priceKey = 'price_per_person';
+        priceKey = "price_per_person";
         break;
       default:
         break;
@@ -107,7 +107,7 @@ const CreateOffer: React.FC = () => {
         animals: state.animalAlignment,
         notes: state.remark,
       };
-      await rest.post('offer/create', postData);
+      await rest.post("offer/create", postData);
     } catch (error) {
       console.error(error);
     }
@@ -117,71 +117,71 @@ const CreateOffer: React.FC = () => {
     <>
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          marginBottom: '2vh',
+          display: "flex",
+          flexDirection: "row",
+          marginBottom: "2vh",
         }}
       >
-        <Box sx={{ pr: '2vh' }}>
+        <Box sx={{ pr: "2vh" }}>
           <TextField
             value={state.startLocation}
-            label='Startort'
+            label="Startort"
             onChange={(e) =>
               setState({ ...state, startLocation: e.target.value })
             }
           />
         </Box>
-        <Box sx={{ pr: '2vh' }}>
+        <Box sx={{ pr: "2vh" }}>
           <img
             src={arrow_right_icon}
-            alt='Car-Icon'
-            style={{ maxWidth: '50px' }}
+            alt="Car-Icon"
+            style={{ maxWidth: "50px" }}
           />
         </Box>
-        <Box sx={{ pr: '2vh' }}>
+        <Box sx={{ pr: "2vh" }}>
           <TextField
             value={state.destination}
-            label='Zielort'
+            label="Zielort"
             onChange={(e) =>
               setState({ ...state, destination: e.target.value })
             }
           />
         </Box>
-        <Box sx={{ pr: '2vh' }}>
+        <Box sx={{ pr: "2vh" }}>
           <TextField
-            label='Startdatum'
-            type='date'
+            label="Startdatum"
+            type="date"
             InputLabelProps={{ shrink: true }}
             onChange={(e) =>
               setState({ ...state, startDate: new Date(e.target.value) })
             }
           />
 
-          <EventIcon sx={{ fontSize: '3.5rem', marginLeft: '1rem' }} />
+          <EventIcon sx={{ fontSize: "3.5rem", marginLeft: "1rem" }} />
         </Box>
       </Box>
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          marginBottom: '2vh',
+          display: "flex",
+          flexDirection: "row",
+          marginBottom: "2vh",
         }}
       >
-        <Box sx={{ pr: '2vh', display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ pr: "2vh", display: "flex", alignItems: "center" }}>
           <img
             src={car_icon}
-            alt='Car-Icon'
+            alt="Car-Icon"
             style={{
-              maxWidth: '50px',
-              height: 'auto',
-              marginRight: '10px',
+              maxWidth: "50px",
+              height: "auto",
+              marginRight: "10px",
             }}
           />
-          <FormControl fullWidth sx={{ width: '200px' }}>
-            <InputLabel id='vehicle-label'>Fahrzeug</InputLabel>
+          <FormControl fullWidth sx={{ width: "200px" }}>
+            <InputLabel id="vehicle-label">Fahrzeug</InputLabel>
             <Select
-              labelId='vehicle-label'
-              label='Fahrzeug'
+              labelId="vehicle-label"
+              label="Fahrzeug"
               value={state.vehicle}
               onChange={(e) =>
                 setState({ ...state, vehicle: Number(e.target.value) })
@@ -192,21 +192,21 @@ const CreateOffer: React.FC = () => {
             </Select>
             <FormHelperText></FormHelperText>
           </FormControl>
-          <Box sx={{ pr: '2vh', display: 'flex', alignItems: 'center' }}>
+          <Box sx={{ pr: "2vh", display: "flex", alignItems: "center" }}>
             <img
               src={trailer_icon}
-              alt='trailer-Icon'
+              alt="trailer-Icon"
               style={{
-                maxWidth: '50px',
-                height: 'auto',
-                marginRight: '10px',
+                maxWidth: "50px",
+                height: "auto",
+                marginRight: "10px",
               }}
             />
-            <FormControl fullWidth sx={{ width: '200px' }}>
-              <InputLabel id='trailer-label'>Anhänger</InputLabel>
+            <FormControl fullWidth sx={{ width: "200px" }}>
+              <InputLabel id="trailer-label">Anhänger</InputLabel>
               <Select
-                labelId='trailer-label'
-                label='Anhänger'
+                labelId="trailer-label"
+                label="Anhänger"
                 value={state.trailer}
                 onChange={(e) =>
                   setState({
@@ -223,18 +223,18 @@ const CreateOffer: React.FC = () => {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ marginBottom: '2vh' }}>
+      <Box sx={{ marginBottom: "2vh" }}>
         <Typography>Gewicht (kg)</Typography>
         <Box sx={{ width: 300 }}>
           <Slider
             min={0}
             max={500}
             marks={[
-              { value: 0, label: '0' },
-              { value: 500, label: '500' },
+              { value: 0, label: "0" },
+              { value: 500, label: "500" },
             ]}
             value={state.cargoWeight}
-            valueLabelDisplay='on'
+            valueLabelDisplay="on"
             onChange={(e, newValue) => {
               setState({
                 ...state,
@@ -246,46 +246,46 @@ const CreateOffer: React.FC = () => {
       </Box>
       <Box
         sx={{
-          width: '70%',
-          marginBottom: '2vh',
-          display: 'flex',
-          justifyContent: 'space-between',
+          width: "70%",
+          marginBottom: "2vh",
+          display: "flex",
+          justifyContent: "space-between",
         }}
       >
         <TextField
-          type='number'
-          label='Frachtgröße (X)'
-          inputProps={{ min: '0', step: '1' }}
-          sx={{ mr: '2vh' }}
+          type="number"
+          label="Frachtgröße (X)"
+          inputProps={{ min: "0", step: "1" }}
+          sx={{ mr: "2vh" }}
           onChange={(e) =>
             setState({ ...state, cargoSizeX: Number(e.target.value) })
           }
         />
         <TextField
-          type='number'
-          label='Frachtgröße (Y)'
-          inputProps={{ min: '0', step: '1' }}
-          sx={{ mr: '2vh' }}
+          type="number"
+          label="Frachtgröße (Y)"
+          inputProps={{ min: "0", step: "1" }}
+          sx={{ mr: "2vh" }}
           onChange={(e) =>
             setState({ ...state, cargoSizeY: Number(e.target.value) })
           }
         />
         <TextField
-          type='number'
-          label='Frachtgröße (Z)'
-          inputProps={{ min: '0', step: '1' }}
-          sx={{ mr: '2vh' }}
+          type="number"
+          label="Frachtgröße (Z)"
+          inputProps={{ min: "0", step: "1" }}
+          sx={{ mr: "2vh" }}
           onChange={(e) =>
             setState({ ...state, cargoSizeZ: Number(e.target.value) })
           }
         />
       </Box>
-      <Box sx={{ marginBottom: '2vh' }}>
-        <FormControl fullWidth sx={{ width: '200px' }}>
-          <InputLabel id='seats-label'>Freie Sitzplätze</InputLabel>
+      <Box sx={{ marginBottom: "2vh" }}>
+        <FormControl fullWidth sx={{ width: "200px" }}>
+          <InputLabel id="seats-label">Freie Sitzplätze</InputLabel>
           <Select
-            labelId='seats-label'
-            label='Freie Sitzplätze'
+            labelId="seats-label"
+            label="Freie Sitzplätze"
             onChange={(e) =>
               setState({
                 ...state,
@@ -302,16 +302,16 @@ const CreateOffer: React.FC = () => {
       </Box>
       <Box
         sx={{
-          marginBottom: '2vh',
-          display: 'flex',
-          alignItems: 'center',
+          marginBottom: "2vh",
+          display: "flex",
+          alignItems: "center",
         }}
       >
-        <FormControl fullWidth sx={{ width: '200px', mr: '2vh' }}>
-          <InputLabel id='price-label'>Preis</InputLabel>
+        <FormControl fullWidth sx={{ width: "200px", mr: "2vh" }}>
+          <InputLabel id="price-label">Preis</InputLabel>
           <Select
-            labelId='price-label'
-            label='Preis'
+            labelId="price-label"
+            label="Preis"
             onChange={(e) =>
               setState({
                 ...state,
@@ -325,53 +325,53 @@ const CreateOffer: React.FC = () => {
           </Select>
         </FormControl>
         <TextField
-          label='Preiswert'
-          type='number'
-          inputProps={{ min: '0', step: '0.01' }}
+          label="Preiswert"
+          type="number"
+          inputProps={{ min: "0", step: "0.01" }}
           onChange={(e) =>
             setState({ ...state, price: Number(e.target.value) })
           }
         />
       </Box>
 
-      <Box sx={{ marginBottom: '2vh' }}>
+      <Box sx={{ marginBottom: "2vh" }}>
         <ToggleButtonGroup
-          color='primary'
+          color="primary"
           value={state.smokerAlignment}
           exclusive
           onChange={(event, newAlignment) =>
-            handleToggleButtonChange('smokerAlignment', event, newAlignment)
+            handleToggleButtonChange("smokerAlignment", event, newAlignment)
           }
         >
           <ToggleButton value={true}>Raucher</ToggleButton>
           <ToggleButton value={false}>Nichtraucher</ToggleButton>
         </ToggleButtonGroup>
       </Box>
-      <Box sx={{ marginBottom: '2vh' }}>
+      <Box sx={{ marginBottom: "2vh" }}>
         <ToggleButtonGroup
-          color='primary'
+          color="primary"
           value={state.animalAlignment}
           exclusive
           onChange={(event, newAlignment) =>
-            handleToggleButtonChange('animalAlignment', event, newAlignment)
+            handleToggleButtonChange("animalAlignment", event, newAlignment)
           }
         >
           <StyledToggleButton value={true}>Tiere erlaubt</StyledToggleButton>
           <StyledToggleButton value={false}>Keine Tiere</StyledToggleButton>
         </ToggleButtonGroup>
       </Box>
-      <Box sx={{ marginBottom: '2vh', width: '100%' }}>
+      <Box sx={{ marginBottom: "2vh", width: "100%" }}>
         <TextField
           fullWidth
-          label='Bemerkungen'
+          label="Bemerkungen"
           multiline
           rows={4}
           value={state.remark}
           onChange={(e) => setState({ ...state, remark: e.target.value })}
         />
       </Box>
-      <Box sx={{ marginBottom: '2vh' }}>
-        <Button variant='contained' onClick={handleSubmit}>
+      <Box sx={{ marginBottom: "2vh" }}>
+        <Button variant="contained" onClick={handleSubmit}>
           Fahrt anlegen
         </Button>
       </Box>
