@@ -1,11 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import Cookies from 'js-cookie';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../App';
+import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../App";
 
 export function getToken() {
-  return Cookies.get('token');
+  return Cookies.get("token");
 }
 
 const CHECK_INTERVAL = 5 * 60 * 1000;
@@ -14,7 +14,7 @@ export const useIsLoggedIn = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const isLoggedInState = useSelector(
-    (state: RootState) => state.user.isLoggedIn,
+    (state: RootState) => state.user.isLoggedIn
   );
 
   useEffect(() => {

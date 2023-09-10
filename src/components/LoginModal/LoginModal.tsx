@@ -1,5 +1,5 @@
-import React, { useCallback, useReducer } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useCallback, useReducer } from "react";
+import { useDispatch } from "react-redux";
 import {
   Alert,
   Box,
@@ -10,55 +10,55 @@ import {
   Snackbar,
   TextField,
   Typography,
-} from '@mui/material';
-import { styled } from '@mui/material/styles';
-import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
-import { login, setUser, UserState } from '../../reducer/user';
-import CloseIcon from '@mui/icons-material/Close';
-import { CenteredColumnGrid } from '../../styles/common';
-import rest from '../../utility/rest';
-import { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { login, setUser, UserState } from "../../reducer/user";
+import CloseIcon from "@mui/icons-material/Close";
+import { CenteredColumnGrid } from "../../styles/common";
+import rest from "../../utility/rest";
+import { AxiosError } from "axios";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
-  email: '',
-  password: '',
+  email: "",
+  password: "",
   errorAlert: false,
-  errorMessage: '',
+  errorMessage: "",
 };
 
 function reducer(
   state: typeof initialState,
-  action: { type: string; payload?: unknown },
+  action: { type: string; payload?: unknown }
 ) {
   switch (action.type) {
-    case 'email':
+    case "email":
       return { ...state, email: action.payload as string };
-    case 'password':
+    case "password":
       return { ...state, password: action.payload as string };
-    case 'openErrorAlert':
+    case "openErrorAlert":
       return { ...state, errorAlert: true };
-    case 'closeErrorAlert':
+    case "closeErrorAlert":
       return { ...state, errorAlert: false };
-    case 'errorMessage':
+    case "errorMessage":
       return { ...state, errorMessage: action.payload as string };
 
     default:
       throw new Error();
   }
 }
-const ModalStyles = styled('div')({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+const ModalStyles = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 });
 
-const Paper = styled('div')(({ theme }) => ({
+const Paper = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
-  border: '1px solid #000',
+  border: "1px solid #000",
   boxShadow: theme.shadows[5],
   padding: theme.spacing(2, 4, 3),
-  width: '30%',
+  width: "30%",
   marginTop: 100,
 }));
 
@@ -79,48 +79,48 @@ const LoginModal: React.FC<LoginModalProps> = ({
 
   const handleEmailChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) =>
-      dispatchLocal({ type: 'email', payload: event.target.value }),
-    [dispatchLocal],
+      dispatchLocal({ type: "email", payload: event.target.value }),
+    [dispatchLocal]
   );
 
   const handlePasswordChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const password = event.target.value;
-      dispatchLocal({ type: 'password', payload: password });
+      dispatchLocal({ type: "password", payload: password });
     },
-    [dispatchLocal],
+    [dispatchLocal]
   );
 
   const handleSubmit = async () => {
     try {
-      await rest.post('auth/login', {
+      await rest.post("auth/login", {
         email: state.email,
         password: state.password,
       });
-      const user = await rest.get('user/me');
+      const user = await rest.get("user/me");
       dispatch(setUser(user.data as UserState));
       dispatch(login());
-      navigate('/profil');
+      navigate("/profil");
       onClose();
-      navigate('/profil');
+      navigate("/profil");
     } catch (error) {
       if (error instanceof AxiosError) {
-        if (typeof error.response?.data.message === 'string') {
+        if (typeof error.response?.data.message === "string") {
           dispatchLocal({
-            type: 'errorMessage',
+            type: "errorMessage",
             payload: `Beim Login ein Fehler aufgetreten: ${error.response?.data.message}`,
           });
         } else {
           dispatchLocal({
-            type: 'errorMessage',
+            type: "errorMessage",
             payload: `Beim Login ein Fehler aufgetreten: ${error.response?.data.message.reduce(
               (prev: string, curr: string, index: number) =>
                 index === 0 ? curr : `${prev}, ${curr}`,
-              '',
+              ""
             )}`,
           });
         }
-        dispatchLocal({ type: 'openErrorAlert' });
+        dispatchLocal({ type: "openErrorAlert" });
       }
     }
   };
@@ -130,7 +130,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
       <ModalStyles>
         <Paper
           onKeyDown={(event) => {
-            if (event.key === 'Enter') {
+            if (event.key === "Enter") {
               handleSubmit();
             }
           }}
@@ -138,19 +138,19 @@ const LoginModal: React.FC<LoginModalProps> = ({
           <Grid2 container sx={{ mb: 3 }}>
             <Grid2
               xs={6}
-              sx={{ display: 'flex' }}
+              sx={{ display: "flex" }}
               onKeyDown={(event) => {
-                if (event.key === 'Enter') {
+                if (event.key === "Enter") {
                   handleSubmit();
                 }
               }}
             >
-              <Typography alignSelf='center' variant='h5'>
+              <Typography alignSelf="center" variant="h5">
                 Anmeldung
               </Typography>
             </Grid2>
-            <Grid2 container justifyContent='right' xs={6}>
-              <IconButton aria-label='close' onClick={onClose}>
+            <Grid2 container justifyContent="right" xs={6}>
+              <IconButton aria-label="close" onClick={onClose}>
                 <CloseIcon />
               </IconButton>
             </Grid2>
@@ -158,8 +158,8 @@ const LoginModal: React.FC<LoginModalProps> = ({
           <Grid2 container spacing={2}>
             <Grid2 xs={12}>
               <TextField
-                label='Email'
-                type='email'
+                label="Email"
+                type="email"
                 value={state.email}
                 onChange={handleEmailChange}
                 fullWidth
@@ -169,8 +169,8 @@ const LoginModal: React.FC<LoginModalProps> = ({
             </Grid2>
             <Grid2 xs={12}>
               <TextField
-                label='Passwort'
-                type='password'
+                label="Passwort"
+                type="password"
                 value={state.password}
                 onChange={handlePasswordChange}
                 fullWidth
@@ -180,10 +180,10 @@ const LoginModal: React.FC<LoginModalProps> = ({
             <Grid2 xs={12}>
               <Box>
                 <Button
-                  type='submit'
+                  type="submit"
                   fullWidth
-                  variant='contained'
-                  color='primary'
+                  variant="contained"
+                  color="primary"
                   onClick={handleSubmit}
                 >
                   Einloggen
@@ -191,23 +191,23 @@ const LoginModal: React.FC<LoginModalProps> = ({
                 <Snackbar
                   open={state.errorAlert}
                   autoHideDuration={6000}
-                  anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-                  onClose={() => dispatchLocal({ type: 'closeErrorAlert' })}
+                  anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                  onClose={() => dispatchLocal({ type: "closeErrorAlert" })}
                 >
                   <Alert
-                    onClose={() => dispatchLocal({ type: 'closeErrorAlert' })}
-                    severity='error'
-                    sx={{ width: '100%' }}
+                    onClose={() => dispatchLocal({ type: "closeErrorAlert" })}
+                    severity="error"
+                    sx={{ width: "100%" }}
                   >
                     {state.errorMessage}
                   </Alert>
                 </Snackbar>
               </Box>
             </Grid2>
-            <Divider style={{ width: '100%' }} />
+            <Divider style={{ width: "100%" }} />
             <CenteredColumnGrid xs={12}>
-              <Typography variant='h6'>Noch kein Account erstellt?</Typography>
-              <Button variant='outlined' onClick={onRegister}>
+              <Typography variant="h6">Noch kein Account erstellt?</Typography>
+              <Button variant="outlined" onClick={onRegister}>
                 Hier registrieren
               </Button>
             </CenteredColumnGrid>

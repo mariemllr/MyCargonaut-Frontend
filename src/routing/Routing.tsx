@@ -1,22 +1,22 @@
-import * as React from 'react';
-import { useSelector } from 'react-redux';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { RootState } from '../App';
-import HomePage from '../pages/HomePage/HomePage';
-import ProfilePage from '../pages/ProfilePage/ProfilePage';
-import Fahrzeugverwaltung from '../pages/Fahrzeugverwaltung/Fahrzeugverwaltung';
-import FahrtenAnlage from '../pages/Fahrten_Anlage/Fahrten_Anlage';
-import FahrtenDetailansicht from '../pages/Fahrt_Detailansicht/Fahrt_Detailansicht';
-import EigeneFahrten from '../pages/Fahrten_Auflistung/Fahrten_Auflistung';
-import Bewertungen from '../pages/Bewertungen/Bewertungen';
-import BewertungAbgeben from '../pages/Bewertungen/Bewertung_Abgeben';
-import Angebote from '../pages/Angebote/Angebote';
-import Gesuche from '../pages/Gesuche/Gesuche';
-import Zahlung from '../pages/Bezahlung/Bezahlung_Fixpreis';
-import VariableZahlung from '../pages/Bezahlung/Bezahlung_Variabel';
-import { ROUTES } from '../resources/route-constants';
-import { Box, Container } from '@mui/material';
-import Navbar from '../components/Navbar/Navbar';
+import * as React from "react";
+import { useSelector } from "react-redux";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { RootState } from "../App";
+import HomePage from "../pages/HomePage/HomePage";
+import ProfilePage from "../pages/ProfilePage/ProfilePage";
+import Fahrzeugverwaltung from "../pages/Fahrzeugverwaltung/Fahrzeugverwaltung";
+import FahrtenAnlage from "../pages/Fahrten_Anlage/Fahrten_Anlage";
+import FahrtenDetailansicht from "../pages/Fahrt_Detailansicht/Fahrt_Detailansicht";
+import EigeneFahrten from "../pages/Fahrten_Auflistung/Fahrten_Auflistung";
+import Bewertungen from "../pages/Bewertungen/Bewertungen";
+import BewertungAbgeben from "../pages/Bewertungen/Bewertung_Abgeben";
+import Angebote from "../pages/Angebote/Angebote";
+import Gesuche from "../pages/Gesuche/Gesuche";
+import Zahlung from "../pages/Bezahlung/Bezahlung_Fixpreis";
+import VariableZahlung from "../pages/Bezahlung/Bezahlung_Variabel";
+import { ROUTES } from "../resources/route-constants";
+import { Box, Container } from "@mui/material";
+import Navbar from "../components/Navbar/Navbar";
 
 export function Routing() {
   const user = useSelector((state: RootState) => state.user);
@@ -24,13 +24,13 @@ export function Routing() {
 
   const currentRoute = React.useMemo(
     () => location.pathname,
-    [location.pathname],
+    [location.pathname]
   );
 
   return (
     <Box>
       {currentRoute !== ROUTES.HOMEPAGE_ROUTE && <Navbar />}
-      <Container maxWidth='xl'>
+      <Container maxWidth="xl">
         <Routes>
           <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} />
           <Route path={ROUTES.PROFILEPAGE_ROUTE} element={<ProfilePage />} />

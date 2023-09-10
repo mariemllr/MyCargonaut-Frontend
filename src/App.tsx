@@ -1,13 +1,13 @@
-import { Provider } from 'react-redux';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import userReducer from '../src/reducer/user';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import theme from './styles/theme';
-import reduxLogger from 'redux-logger';
-import RootComponent from './RootComponent';
+import { Provider } from "react-redux";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import userReducer from "../src/reducer/user";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import theme from "./styles/theme";
+import reduxLogger from "redux-logger";
+import RootComponent from "./RootComponent";
 
 const reducer = combineReducers({
   user: userReducer,
@@ -29,7 +29,7 @@ function App() {
       <CssBaseline />
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Provider store={store}>
-          <div className='App'>
+          <div className="App">
             <RootComponent />
           </div>
         </Provider>

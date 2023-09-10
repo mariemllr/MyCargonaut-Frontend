@@ -1,15 +1,15 @@
-import { AxiosError } from 'axios';
-import rest from './rest';
+import { AxiosError } from "axios";
+import rest from "./rest";
 
 const uploadImage = async (image?: string) => {
   if (!image) return;
   try {
     const formData = new FormData();
     const blob = await fetch(image).then((b) => b.blob());
-    formData.append('file', blob);
-    await rest.put('/user/image', formData, {
+    formData.append("file", blob);
+    await rest.put("/user/image", formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
       },
     });
   } catch (error) {
