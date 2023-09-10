@@ -1,29 +1,29 @@
-import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import { Container } from '@mui/material';
-import { ROUTES } from '../../resources/route-constants';
+import * as React from "react";
+import { useNavigate } from "react-router-dom";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
+import { Container } from "@mui/material";
+import { ROUTES } from "../../resources/route-constants";
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <Container maxWidth='xl'>
-      <AppBar position='static' sx={{ mt: 2, bgcolor: '#acd48c' }}>
+    <Container maxWidth="xl">
+      <AppBar position="static" sx={{ mt: 2, bgcolor: "#acd48c" }}>
         <Toolbar
           disableGutters
-          sx={{ display: 'flex', justifyContent: 'space-between' }}
+          sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Button
-            color='inherit'
-            onClick={() => navigate('/')}
+            color="inherit"
+            onClick={() => navigate("/")}
             sx={{
               p: 2,
-              borderColor: 'black',
+              borderColor: "black",
               borderWidth: 1,
-              borderStyle: 'solid',
+              borderStyle: "solid",
               borderRadius: 0,
               flexGrow: 1,
             }}
@@ -31,13 +31,13 @@ const Navbar: React.FC = () => {
             Home
           </Button>
           <Button
-            color='inherit'
+            color="inherit"
             onClick={() => navigate(ROUTES.PROFILEPAGE_ROUTE)}
             sx={{
               p: 2,
-              borderColor: 'black',
+              borderColor: "black",
               borderWidth: 1,
-              borderStyle: 'solid',
+              borderStyle: "solid",
               borderRadius: 0,
               flexGrow: 1,
             }}
@@ -45,13 +45,13 @@ const Navbar: React.FC = () => {
             Profil
           </Button>
           <Button
-            color='inherit'
+            color="inherit"
             onClick={() => navigate(ROUTES.FAHRZEUGVERWALTUNG_ROUTE)}
             sx={{
               p: 2,
-              borderColor: 'black',
+              borderColor: "black",
               borderWidth: 1,
-              borderStyle: 'solid',
+              borderStyle: "solid",
               borderRadius: 0,
               flexGrow: 1,
             }}
@@ -59,13 +59,13 @@ const Navbar: React.FC = () => {
             Fahrzeuge
           </Button>
           <Button
-            color='inherit'
+            color="inherit"
             onClick={() => navigate(ROUTES.FAHRTEN_ANLAGE_ROUTE)}
             sx={{
               p: 2,
-              borderColor: 'black',
+              borderColor: "black",
               borderWidth: 1,
-              borderStyle: 'solid',
+              borderStyle: "solid",
               borderRadius: 0,
               flexGrow: 1,
             }}
@@ -73,13 +73,13 @@ const Navbar: React.FC = () => {
             Eintrag anlegen
           </Button>
           <Button
-            color='inherit'
-            onClick={() => navigate('/chat')}
+            color="inherit"
+            onClick={() => navigate("/chat")}
             sx={{
               p: 2,
-              borderColor: 'black',
+              borderColor: "black",
               borderWidth: 1,
-              borderStyle: 'solid',
+              borderStyle: "solid",
               borderRadius: 0,
               flexGrow: 1,
             }}

@@ -11,8 +11,8 @@ import {
   MenuItem,
   Select,
   TextField,
-} from '@mui/material';
-import Grid2 from '@mui/material/Unstable_Grid2';
+} from "@mui/material";
+import Grid2 from "@mui/material/Unstable_Grid2";
 import {
   UserState,
   setBirthday,
@@ -20,14 +20,14 @@ import {
   setLastName,
   setNote,
   setSmoker,
-} from '../../../reducer/user';
-import UserAvatar from '../../UserAvatar/UserAvatar';
-import Evaluation from '../../Evaluation/Evaluation';
-import uploadImage from '../../../utility/UploadImage';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { DatePicker } from '@mui/x-date-pickers';
-import rest from '../../../utility/rest';
+} from "../../../reducer/user";
+import UserAvatar from "../../UserAvatar/UserAvatar";
+import Evaluation from "../../Evaluation/Evaluation";
+import uploadImage from "../../../utility/UploadImage";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { DatePicker } from "@mui/x-date-pickers";
+import rest from "../../../utility/rest";
 
 interface ProfileInformationProps {
   user: UserState;
@@ -52,8 +52,7 @@ const ProfileInformation: React.FC<ProfileInformationProps> = ({ user }) => {
     };
     setEditing(false);
     try {
-      const response = await rest.put('/profile', updatedUser);
-      console.log(response);
+      const response = await rest.put("/profile", updatedUser);
     } catch (error) {
       console.error(error);
     }
@@ -66,23 +65,23 @@ const ProfileInformation: React.FC<ProfileInformationProps> = ({ user }) => {
   return (
     <Box
       sx={{
-        border: '1.5px solid black',
-        borderRadius: '1px',
-        width: '100%',
-        p: '3vh',
+        border: "1.5px solid black",
+        borderRadius: "1px",
+        width: "100%",
+        p: "3vh",
       }}
     >
       <Grid2 container>
         <Grid2 xs={7}>
           <Box
             sx={{
-              border: '1.5px solid #e2f0d9',
-              borderRadius: '1px',
-              width: '100%',
-              p: '2vh',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'start',
+              border: "1.5px solid #e2f0d9",
+              borderRadius: "1px",
+              width: "100%",
+              p: "2vh",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "start",
             }}
           >
             <Table>
@@ -94,9 +93,9 @@ const ProfileInformation: React.FC<ProfileInformationProps> = ({ user }) => {
                   <TableCell>
                     <Box
                       sx={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
                       }}
                     >
                       <Box>
@@ -113,20 +112,20 @@ const ProfileInformation: React.FC<ProfileInformationProps> = ({ user }) => {
                       </Box>
                       <Box
                         sx={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center',
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
                         }}
                       >
                         <Button
-                          variant='contained'
+                          variant="contained"
                           onClick={handleEdit}
                           sx={{ mr: 1 }}
                         >
                           Edit
                         </Button>
                         {editing && (
-                          <Button variant='contained' onClick={handleSave}>
+                          <Button variant="contained" onClick={handleSave}>
                             Save
                           </Button>
                         )}
@@ -156,8 +155,8 @@ const ProfileInformation: React.FC<ProfileInformationProps> = ({ user }) => {
                   <TableCell>
                     {editing ? (
                       <DatePicker
-                        label='Geburtstag'
-                        value={user.birthday || null}
+                        label="Geburtstag"
+                        value={user.birthday ?? null}
                         onChange={(date) => {
                           if (date !== null) {
                             dispatch(setBirthday(date));
@@ -165,7 +164,7 @@ const ProfileInformation: React.FC<ProfileInformationProps> = ({ user }) => {
                         }}
                       />
                     ) : (
-                      user.birthday?.toLocaleDateString()
+                      "date"
                     )}
                   </TableCell>
                 </TableRow>
@@ -178,20 +177,20 @@ const ProfileInformation: React.FC<ProfileInformationProps> = ({ user }) => {
                       <FormControl fullWidth>
                         <InputLabel>Raucher</InputLabel>
                         <Select
-                          value={user.smoker ? 'true' : 'false'}
-                          label='Raucher'
+                          value={user.smoker ? "true" : "false"}
+                          label="Raucher"
                           onChange={(e) =>
-                            dispatch(setSmoker(e.target.value === 'true'))
+                            dispatch(setSmoker(e.target.value === "true"))
                           }
                         >
-                          <MenuItem value={'true'}>Ja</MenuItem>
-                          <MenuItem value={'false'}>Nein</MenuItem>
+                          <MenuItem value={"true"}>Ja</MenuItem>
+                          <MenuItem value={"false"}>Nein</MenuItem>
                         </Select>
                       </FormControl>
                     ) : user.smoker ? (
-                      'Ja'
+                      "Ja"
                     ) : (
-                      'Nein'
+                      "Nein"
                     )}
                   </TableCell>
                 </TableRow>
@@ -208,7 +207,7 @@ const ProfileInformation: React.FC<ProfileInformationProps> = ({ user }) => {
                   <TableCell>
                     {editing ? (
                       <TextField
-                        label='Notiz'
+                        label="Notiz"
                         multiline
                         rows={4}
                         defaultValue={user.note}
@@ -233,10 +232,10 @@ const ProfileInformation: React.FC<ProfileInformationProps> = ({ user }) => {
           ></UserAvatar>
         </Grid2>
         <Grid2 xs={12}>
-          <Evaluation value={4} name={'Beifahrerbewertung'}></Evaluation>
+          <Evaluation value={4} name={"Beifahrerbewertung"}></Evaluation>
         </Grid2>
         <Grid2 xs={12}>
-          <Evaluation value={3.5} name={'Fahrerbewertung'}></Evaluation>
+          <Evaluation value={3.5} name={"Fahrerbewertung"}></Evaluation>
         </Grid2>
       </Grid2>
     </Box>

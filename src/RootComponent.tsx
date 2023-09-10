@@ -1,7 +1,7 @@
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Routing } from './routing/Routing';
-import { Container } from '@mui/material';
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Routing } from "./routing/Routing";
+import { Container } from "@mui/material";
 
 const RootComponent: React.FC = () => {
   return (

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Rating, Typography } from '@mui/material';
+import React from "react";
+import { Box, Rating, Typography } from "@mui/material";
 
 interface EvaluationProps {
   value: number;
@@ -10,20 +10,20 @@ const Evaluation = ({ value, name }: EvaluationProps) => {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        mt: '2vh',
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        mt: "2vh",
       }}
     >
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'flex-start',
-          minWidth: '150px',
+          display: "flex",
+          justifyContent: "flex-start",
+          minWidth: "150px",
         }}
       >
-        <Typography component='legend'>{name}</Typography>
+        <Typography component="legend">{name}</Typography>
       </Box>
       <Box>
         <Rating
@@ -32,11 +32,11 @@ const Evaluation = ({ value, name }: EvaluationProps) => {
           precision={0.5}
           readOnly
           sx={{
-            '& .MuiRating-iconFilled': {
-              color: '#517f36',
+            "& .MuiRating-iconFilled": {
+              color: "#517f36",
             },
-            '& .MuiRating-iconHover': {
-              color: '#517f36',
+            "& .MuiRating-iconHover": {
+              color: "#517f36",
             },
           }}
         />
