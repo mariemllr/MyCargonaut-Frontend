@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";

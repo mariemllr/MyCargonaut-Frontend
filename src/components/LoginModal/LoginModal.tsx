@@ -12,7 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import Grid2 from "@mui/material/Unstable_Grid2";
 import { login, setUser, UserState } from "../../reducer/user";
 import CloseIcon from "@mui/icons-material/Close";
 import { CenteredColumnGrid } from "../../styles/common";

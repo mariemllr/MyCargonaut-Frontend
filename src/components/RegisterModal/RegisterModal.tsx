@@ -196,7 +196,6 @@ const RegisterModal = ({
   const handleSubmit = async () => {
     if (state.password === state.passwordConfirm) {
       try {
-        console.log(state.birthday);
         await rest.post("auth/register", {
           email: state.email,
           password: state.password,

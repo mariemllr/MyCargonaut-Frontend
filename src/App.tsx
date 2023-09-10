@@ -9,12 +9,12 @@ import theme from "./styles/theme";
 import reduxLogger from "redux-logger";
 import RootComponent from "./RootComponent";
 
-const reducer = combineReducers({
+export const rootReducer = combineReducers({
   user: userReducer,
 });
 
 const store = configureStore({
-  reducer: reducer,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) => {
     const middleware = getDefaultMiddleware({ serializableCheck: false });
     middleware.push(reduxLogger);
@@ -22,7 +22,7 @@ const store = configureStore({
   },
 });
 
-export type RootState = ReturnType<typeof reducer>;
+export type RootState = ReturnType<typeof rootReducer>;
 function App() {
   return (
     <ThemeProvider theme={theme}>

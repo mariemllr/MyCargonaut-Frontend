@@ -38,9 +38,9 @@ function SideNavbar() {
         variant="permanent"
         open={true}
         sx={{
-          width: 200, // Adjust width as needed
+          width: 200,
           "& .MuiDrawer-paper": {
-            width: 200, // Adjust width as needed
+            width: 200,
           },
         }}
       >

@@ -53,7 +53,6 @@ const ProfileInformation: React.FC<ProfileInformationProps> = ({ user }) => {
     setEditing(false);
     try {
       const response = await rest.put("/profile", updatedUser);
-      console.log(response);
     } catch (error) {
       console.error(error);
     }
