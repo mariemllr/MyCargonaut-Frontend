@@ -13,4 +13,5 @@ export const ROUTES = {
   BEZAHLUNG_FIXPREIS_ROUTE: '/bezahlung-fixpreis',
   BEZAHLUNG_VARIABEL_ROUTE: '/bezahlung-variabel',
   CHAT_ROUTE: '/chat',
+  TRACKING_ROUTE: '/tracking',
 };

@@ -14,6 +14,7 @@ import Angebote from '../pages/Angebote/Angebote';
 import Gesuche from '../pages/Gesuche/Gesuche';
 import Zahlung from '../pages/Bezahlung/Bezahlung_Fixpreis';
 import CHAT from '../pages/Chat/Chat';
+import Tracking from '../pages/Tracking/Tracking';
 import VariableZahlung from '../pages/Bezahlung/Bezahlung_Variabel';
 import { ROUTES } from '../resources/route-constants';
 import { Box, Container } from '@mui/material';
@@ -38,6 +39,7 @@ export function Routing() {
           <Route path={ROUTES.ANGEBOTE_ROUTE} element={<Angebote />} />
           <Route path={ROUTES.GESUCHE_ROUTE} element={<Gesuche />} />
           <Route path={ROUTES.BEZAHLUNG_FIXPREIS_ROUTE} element={<Zahlung />} />
+          <Route path={ROUTES.TRACKING_ROUTE} element={<Tracking />} />
           <Route
             path={ROUTES.BEZAHLUNG_VARIABEL_ROUTE}
             element={<VariableZahlung />}
