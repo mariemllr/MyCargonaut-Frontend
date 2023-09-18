@@ -15,6 +15,7 @@ import Gesuche from "../pages/Gesuche/Gesuche";
 import Zahlung from "../pages/Bezahlung/Bezahlung_Fixpreis";
 import VariableZahlung from "../pages/Bezahlung/Bezahlung_Variabel";
 import Tracking from "../pages/Tracking/Tracking";
+import Chat from "../pages/Chat/Chat";
 import { ROUTES } from "../resources/route-constants";
 import { Box, Container } from "@mui/material";
 import Navbar from "../components/Navbar/Navbar";
@@ -68,6 +69,7 @@ export function Routing() {
             element={<ProfilePage />}
           />
           <Route path={ROUTES.TRACKING_ROUTE} element={<Tracking />} />
+          <Route path={ROUTES.CHAT_ROUTE} element={<Chat />} />
         </Routes>
       </Container>
     </Box>
