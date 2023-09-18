@@ -14,6 +14,7 @@ import Angebote from "../pages/Angebote/Angebote";
 import Gesuche from "../pages/Gesuche/Gesuche";
 import Zahlung from "../pages/Bezahlung/Bezahlung_Fixpreis";
 import VariableZahlung from "../pages/Bezahlung/Bezahlung_Variabel";
+import Chat from "../pages/Chat/Chat";
 import { ROUTES } from "../resources/route-constants";
 import { Box, Container } from "@mui/material";
 import Navbar from "../components/Navbar/Navbar";
@@ -66,6 +67,7 @@ export function Routing() {
             path={ROUTES.OTHER_PROFILEPAGE_ROUTE}
             element={<ProfilePage />}
           />
+          <Route path={ROUTES.CHAT_ROUTE} element={<Chat />} />
         </Routes>
       </Container>
     </Box>
