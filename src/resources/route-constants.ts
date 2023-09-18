@@ -12,5 +12,6 @@ export const ROUTES = {
   FAHRZEUGVERWALTUNG_ROUTE: "/fahrzeugverwaltung",
   BEZAHLUNG_FIXPREIS_ROUTE: "/bezahlung-fixpreis",
   BEZAHLUNG_VARIABEL_ROUTE: "/bezahlung-variabel",
+  TRACKING_ROUTE: "/tracking",
   CHAT_ROUTE: "/chat",
 };
