@@ -5,7 +5,7 @@ import { rest } from "msw";
 import { setupServer } from "msw/node";
 
 const server = setupServer(
-  rest.get("http://localhost:8080/offer", (req, res, ctx) => {
+  rest.get("http://ec2-16-170-140-95.eu-north-1.compute.amazonaws.com:3000/offer", (req, res, ctx) => {
     return res(
       ctx.json([
         {
