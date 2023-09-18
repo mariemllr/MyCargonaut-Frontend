@@ -65,7 +65,7 @@ const Chat: React.FC = () => {
   const initialChatPartners: ChatPartner[] = [
     {
       id: 0,
-      name: "Bastian Vidal",
+      name: "Max Mustermann",
       messages: [
         {
           id: 0,
@@ -88,7 +88,7 @@ const Chat: React.FC = () => {
         {
           id: 3,
           text: "Angebot: Fahrt nach Berlin mit 3 verfügbaren Plätzen um 10:00 Uhr.",
-          sender: false,
+          sender: true,
           type: "offer",
           offer: {
             destination: "Berlin",
@@ -100,7 +100,7 @@ const Chat: React.FC = () => {
     },
     {
       id: 1,
-      name: "Max Mustermann",
+      name: "Bastian Vidal",
       messages: [
         {
           id: 0,
@@ -211,6 +211,13 @@ const Chat: React.FC = () => {
                           justifyContent: "flex-end",
                           marginTop: "10px",
                         }}>
+                        <Button
+                          variant="contained"
+                          color="warning"
+                          size="small"
+                          style={{ marginRight: "5px" }}>
+                          Ansicht
+                        </Button>
                         <Button
                           variant="contained"
                           color="primary"
