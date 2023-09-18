@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.e6c13ad2.css",
-    "main.js": "/static/js/main.8cdc1c53.js",
-    "static/js/787.e958778f.chunk.js": "/static/js/787.e958778f.chunk.js",
-    "static/media/trailer-icon.jpg": "/static/media/trailer-icon.64d052cd8eb08878597c.jpg",
-    "static/media/car-icon.jpg": "/static/media/car-icon.f6b0be9f1cc7f1c9a0ce.jpg",
-    "static/media/semi_androidMyCargonautldpi.png": "/static/media/semi_androidMyCargonautldpi.b689bd2e19cbc34224d1.png",
-    "index.html": "/index.html",
-    "main.e6c13ad2.css.map": "/static/css/main.e6c13ad2.css.map",
-    "main.8cdc1c53.js.map": "/static/js/main.8cdc1c53.js.map",
-    "787.e958778f.chunk.js.map": "/static/js/787.e958778f.chunk.js.map"
+    "main.css": "/MyCargonaut-Frontend/static/css/main.e6c13ad2.css",
+    "main.js": "/MyCargonaut-Frontend/static/js/main.1b22bac5.js",
+    "static/js/787.e958778f.chunk.js": "/MyCargonaut-Frontend/static/js/787.e958778f.chunk.js",
+    "static/media/trailer-icon.jpg": "/MyCargonaut-Frontend/static/media/trailer-icon.64d052cd8eb08878597c.jpg",
+    "static/media/car-icon.jpg": "/MyCargonaut-Frontend/static/media/car-icon.f6b0be9f1cc7f1c9a0ce.jpg",
+    "static/media/semi_androidMyCargonautldpi.png": "/MyCargonaut-Frontend/static/media/semi_androidMyCargonautldpi.b689bd2e19cbc34224d1.png",
+    "index.html": "/MyCargonaut-Frontend/index.html",
+    "main.e6c13ad2.css.map": "/MyCargonaut-Frontend/static/css/main.e6c13ad2.css.map",
+    "main.1b22bac5.js.map": "/MyCargonaut-Frontend/static/js/main.1b22bac5.js.map",
+    "787.e958778f.chunk.js.map": "/MyCargonaut-Frontend/static/js/787.e958778f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.8cdc1c53.js"
+    "static/js/main.1b22bac5.js"
   ]
 }
