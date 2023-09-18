@@ -172,7 +172,7 @@ const Chat: React.FC = () => {
     initialChatPartners[0]?.id || -1
   );
 
-  const handleMessageSend = () => {
+  const handleMessageSend = async () => {
     const newMessage: Message = {
       id:
         chatPartners.find((partner) => partner.id === currentPartner)?.messages
@@ -181,17 +181,27 @@ const Chat: React.FC = () => {
       sender: true,
       type: "text",
     };
-    const updatedPartners = chatPartners.map((partner) => {
-      if (partner.id === currentPartner) {
-        return {
-          ...partner,
-          messages: [...partner.messages, newMessage],
-        };
+
+    try {
+      const response = await rest.post("chat", newMessage);
+      if (response.status === 200) {
+        const updatedPartners = chatPartners.map((partner) => {
+          if (partner.id === currentPartner) {
+            return {
+              ...partner,
+              messages: [...partner.messages, newMessage],
+            };
+          }
+          return partner;
+        });
+        setChatPartners(updatedPartners);
+        setInput("");
+      } else {
+        console.error("Fehler beim Senden der Nachricht:", response);
       }
-      return partner;
-    });
-    setChatPartners(updatedPartners);
-    setInput("");
+    } catch (error) {
+      console.error("Fehler beim Senden der Nachricht:", error);
+    }
   };
 
   return (
