@@ -11,8 +11,7 @@ const BewertungAbgeben: React.FC = () => {
         border: "1.5px solid black",
         borderRadius: "1px",
         backgroundColor: "white",
-      }}
-    >
+      }}>
       <Box
         sx={{
           backgroundColor: theme.palette.primary.main,
@@ -20,8 +19,7 @@ const BewertungAbgeben: React.FC = () => {
           justifyContent: "center",
           alignItems: "center",
           p: "3vh",
-        }}
-      >
+        }}>
         <img
           src={logo}
           alt="Logo"
@@ -39,34 +37,33 @@ const BewertungAbgeben: React.FC = () => {
       <Box
         sx={{
           p: "3vh",
-        }}
-      >
+        }}>
         <Typography variant="body1">Bewertung:</Typography>
         <Rating name="sterne-bewertung" />
         <TextField
           id="frage1"
-          label="Frage 1"
+          label="War der Fahrer/Mitfahrer pünktlich? (+/- 5 Minuten)"
           variant="outlined"
           fullWidth
           margin="normal"
         />
         <TextField
           id="frage2"
-          label="Frage 2"
+          label="Hat sich der Fahrer/Mitfharer an alle Abmachungen gehalten?"
           variant="outlined"
           fullWidth
           margin="normal"
         />
         <TextField
           id="frage3"
-          label="Frage 3"
+          label="Haben sie sich bei der Fahrt wohl gefühlt?"
           variant="outlined"
           fullWidth
           margin="normal"
         />
         <TextField
           id="frage4"
-          label="Frage 4"
+          label="(Nur für den Fahrer) Würden sie den Mitfarher wieder mitnehmen?"
           variant="outlined"
           fullWidth
           margin="normal"
@@ -75,8 +72,7 @@ const BewertungAbgeben: React.FC = () => {
           variant="contained"
           color="primary"
           type="submit"
-          style={{ marginTop: "2vh" }}
-        >
+          style={{ marginTop: "2vh" }}>
           Bewertung abgeben
         </Button>
       </Box>
