@@ -16,7 +16,8 @@ import {
   DialogTitle,
 } from "@mui/material";
 import { styled } from "@mui/system";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import rest from "../../utility/rest";
 
 const MessageBubble = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1, 2),
@@ -56,6 +57,26 @@ interface ChatPartner {
 const Chat: React.FC = () => {
   const [input, setInput] = useState<string>("");
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const fetchChatPartners = async () => {
+      try {
+        const response = await rest.get("chat");
+        if (response.status === 200) {
+          setChatPartners(response.data);
+        } else {
+          console.error(
+            "Fehler beim Abrufen der Chat-Partner-Daten:",
+            response
+          );
+        }
+      } catch (error) {
+        console.error("Fehler beim Abrufen der Chat-Partner-Daten:", error);
+      }
+    };
+
+    fetchChatPartners();
+  }, []);
 
   const handleOpen = () => {
     setOpen(true);
@@ -151,7 +172,7 @@ const Chat: React.FC = () => {
     initialChatPartners[0]?.id || -1
   );
 
-  const handleMessageSend = () => {
+  const handleMessageSend = async () => {
     const newMessage: Message = {
       id:
         chatPartners.find((partner) => partner.id === currentPartner)?.messages
@@ -160,17 +181,27 @@ const Chat: React.FC = () => {
       sender: true,
       type: "text",
     };
-    const updatedPartners = chatPartners.map((partner) => {
-      if (partner.id === currentPartner) {
-        return {
-          ...partner,
-          messages: [...partner.messages, newMessage],
-        };
+
+    try {
+      const response = await rest.post("chat", newMessage);
+      if (response.status === 200) {
+        const updatedPartners = chatPartners.map((partner) => {
+          if (partner.id === currentPartner) {
+            return {
+              ...partner,
+              messages: [...partner.messages, newMessage],
+            };
+          }
+          return partner;
+        });
+        setChatPartners(updatedPartners);
+        setInput("");
+      } else {
+        console.error("Fehler beim Senden der Nachricht:", response);
       }
-      return partner;
-    });
-    setChatPartners(updatedPartners);
-    setInput("");
+    } catch (error) {
+      console.error("Fehler beim Senden der Nachricht:", error);
+    }
   };
 
   return (
