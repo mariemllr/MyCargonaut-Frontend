@@ -10,6 +10,10 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
 } from "@mui/material";
 import { styled } from "@mui/system";
 import React, { useState } from "react";
@@ -51,14 +55,22 @@ interface ChatPartner {
 
 const Chat: React.FC = () => {
   const [input, setInput] = useState<string>("");
+  const [open, setOpen] = useState(false);
 
-  const OfferBubble = styled(Paper)(({ theme }) => ({
-    padding: theme.spacing(1, 2),
-    margin: theme.spacing(1, 0),
-    maxWidth: "80%",
-    wordWrap: "break-word",
-    backgroundColor: theme.palette.grey[200],
-  }));
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const [selectedOffer, setSelectedOffer] = useState<RideOffer | null>(null);
+
+  const handleOfferSelection = (offer: RideOffer) => {
+    setSelectedOffer(offer);
+    handleClose();
+  };
 
   const initialChatPartners: ChatPartner[] = [
     {
@@ -254,9 +266,39 @@ const Chat: React.FC = () => {
       <Button
         variant="contained"
         color="secondary"
-        style={{ marginTop: "10px" }}>
+        style={{ marginTop: "10px" }}
+        onClick={handleOpen}>
         Angebot Auswählen
       </Button>
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Angebote</DialogTitle>
+        <DialogContent>
+          {initialChatPartners.map((partner) =>
+            partner.messages.map(
+              (message) =>
+                message.type === "offer" && (
+                  <div key={message.id}>
+                    {`Von: ${message.offer?.departureTime} Zu: ${message.offer?.destination}`}
+                    <Button
+                      variant="outlined"
+                      size="small"
+                      style={{ marginLeft: "10px" }}
+                      onClick={() => handleOfferSelection(message.offer!)}>
+                      Auswählen
+                    </Button>
+                  </div>
+                )
+            )
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Schließen
+          </Button>
+          <Button color="primary">Neues Angebot erstellen</Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };
