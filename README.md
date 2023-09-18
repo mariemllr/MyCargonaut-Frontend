@@ -1,3 +1,13 @@
+# Auf Live-Version zugreifen
+
+Bevor man sich auf unserer Website anmelden kann muss man leider einige Sicherheitseinstellungen umgehen damit unsere Cookies funktionieren.
+
+1. Firefox runterladen (in Chrome geht es nicht)
+2. In Suchleiste 'about:config' eingeben
+3. Nach 'block_active' suchen
+4. Auf 'security.mixed_content.block_active_content' doppelklicken
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
