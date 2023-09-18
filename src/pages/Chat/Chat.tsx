@@ -60,8 +60,6 @@ const Chat: React.FC = () => {
     backgroundColor: theme.palette.grey[200],
   }));
 
-  // ... (Rest des Codes bleibt gleich)
-
   const initialChatPartners: ChatPartner[] = [
     {
       id: 0,
@@ -165,7 +163,7 @@ const Chat: React.FC = () => {
 
   return (
     <Container maxWidth="sm">
-      <h1>Chat</h1>
+      <h1>Deine Unterhaltungen</h1>
       <FormControl fullWidth>
         <InputLabel>Chatpartner</InputLabel>
         <Select
@@ -257,7 +255,7 @@ const Chat: React.FC = () => {
         variant="contained"
         color="secondary"
         style={{ marginTop: "10px" }}>
-        Angebot machen
+        Angebot Auswählen
       </Button>
     </Container>
   );
