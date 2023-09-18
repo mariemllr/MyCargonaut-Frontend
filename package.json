@@ -36,7 +36,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ext .ts,.tsx,.js --fix",
+    "lint": "eslint . --ext .ts --fix",
     "prettier": "prettier --write .",
     "lint-staged": "lint-staged",
     "predeploy": "npm run build",
