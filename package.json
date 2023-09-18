@@ -17,6 +17,7 @@
     "@types/redux-logger": "^3.0.9",
     "axios": "^1.4.0",
     "date-fns": "^2.30.0",
+    "gh-pages": "^6.0.0",
     "jest-environment-jsdom": "^29.6.4",
     "jest-mock-axios": "^4.7.2",
     "js-cookie": "^3.0.5",
